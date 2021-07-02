@@ -16,7 +16,7 @@ namespace Dictionary.Resources
         public Search searchForm;
         public Games gamesForm;
         public MainForm mainForm;
-        public bool _loadDone = false;
+        public bool loadDone = false;
 
         public MainRes()
         {
@@ -24,7 +24,7 @@ namespace Dictionary.Resources
             searchForm = new Search();
             gamesForm = new Games();
             mainForm = new MainForm();
-            _loadDone = true;
+            loadDone = true;
         }
     }
 }
