@@ -436,6 +436,7 @@ namespace Dictionary.Forms.Search
             this.treeView_DetailDic.Name = "treeView_DetailDic";
             this.treeView_DetailDic.Size = new System.Drawing.Size(224, 351);
             this.treeView_DetailDic.TabIndex = 4;
+            this.treeView_DetailDic.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_DetailDic_AfterSelect);
             // 
             // tabPage_Mask
             // 

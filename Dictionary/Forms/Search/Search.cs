@@ -311,7 +311,7 @@ namespace Dictionary.Forms.Search
                     if (Convert.ToInt32(tabPage_DetailDic.Tag) == indDicSel)
                         return;
                 tabPage_DetailDic.Tag = indDicSel;
-                tabPage_DetailDic.SuspendLayout();
+                //tabPage_DetailDic.SuspendLayout();
 
                 var nodes = treeView_DetailDic.Nodes;
                 for (int i = 0; i < 27; i++)
@@ -323,10 +323,19 @@ namespace Dictionary.Forms.Search
                         nodes[i].Nodes[j].Tag = j;
                     }
                 }
-                tabPage_DetailDic.ResumeLayout();
+                //tabPage_DetailDic.ResumeLayout();
             }
             else
                 indDicSel = cBox_Dics.SelectedIndex;
+        }
+        private void treeView_DetailDic_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (treeView_DetailDic.SelectedNode != null && treeView_DetailDic.SelectedNode.Tag != null)
+            {
+                var val = Convert.ToInt32(treeView_DetailDic.SelectedNode.Tag);
+                var key = treeView_DetailDic.SelectedNode.Text;
+                Utility.LoadWord(key, val, indDicSel, rTBox_Word);
+            }
         }
         #endregion
 
@@ -576,5 +585,6 @@ namespace Dictionary.Forms.Search
         }
 
         #endregion
+
     }
 }
