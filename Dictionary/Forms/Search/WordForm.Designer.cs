@@ -32,23 +32,23 @@ namespace Dictionary.Forms.Search
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WordForm));
             this.lb_Title = new System.Windows.Forms.Label();
             this.panel_Main = new System.Windows.Forms.Panel();
-            this.panel_Rule = new System.Windows.Forms.Panel();
-            this.panel_View = new System.Windows.Forms.Panel();
-            this.panel_Write = new System.Windows.Forms.Panel();
-            this.rTbox_Write = new System.Windows.Forms.RichTextBox();
-            this.lb_Write = new System.Windows.Forms.Label();
-            this.lb_View = new System.Windows.Forms.Label();
             this.panel_Top = new System.Windows.Forms.Panel();
             this.btn_Close = new Dictionary.Forms.Search.UserControls.s_ButtonRound();
+            this.lb_View = new System.Windows.Forms.Label();
+            this.lb_Write = new System.Windows.Forms.Label();
+            this.panel_Rule = new System.Windows.Forms.Panel();
             this.rTbox_Rule = new Dictionary.Forms.Search.UserControls.s_RichTextBoxOnlyView();
             this.btn_View = new Dictionary.Forms.Search.UserControls.s_ButtonRound();
+            this.panel_View = new System.Windows.Forms.Panel();
             this.rTbox_View = new Dictionary.Forms.Search.UserControls.s_RichTextBoxOnlyView();
+            this.panel_Write = new System.Windows.Forms.Panel();
+            this.rTbox_Write = new System.Windows.Forms.RichTextBox();
             this.btn_Save = new Dictionary.Forms.Search.UserControls.s_ButtonRound();
             this.panel_Main.SuspendLayout();
+            this.panel_Top.SuspendLayout();
             this.panel_Rule.SuspendLayout();
             this.panel_View.SuspendLayout();
             this.panel_Write.SuspendLayout();
-            this.panel_Top.SuspendLayout();
             this.SuspendLayout();
             // 
             // lb_Title
@@ -75,62 +75,38 @@ namespace Dictionary.Forms.Search
             this.panel_Main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_Main.Location = new System.Drawing.Point(0, 0);
             this.panel_Main.Name = "panel_Main";
-            this.panel_Main.Size = new System.Drawing.Size(791, 397);
+            this.panel_Main.Size = new System.Drawing.Size(795, 397);
             this.panel_Main.TabIndex = 1;
             // 
-            // panel_Rule
+            // panel_Top
             // 
-            this.panel_Rule.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel_Rule.Controls.Add(this.rTbox_Rule);
-            this.panel_Rule.Location = new System.Drawing.Point(3, 35);
-            this.panel_Rule.Name = "panel_Rule";
-            this.panel_Rule.Padding = new System.Windows.Forms.Padding(4);
-            this.panel_Rule.Size = new System.Drawing.Size(226, 319);
-            this.panel_Rule.TabIndex = 8;
+            this.panel_Top.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel_Top.Controls.Add(this.btn_Close);
+            this.panel_Top.Controls.Add(this.lb_Title);
+            this.panel_Top.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_Top.Location = new System.Drawing.Point(0, 0);
+            this.panel_Top.Name = "panel_Top";
+            this.panel_Top.Size = new System.Drawing.Size(793, 29);
+            this.panel_Top.TabIndex = 11;
+            this.panel_Top.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
+            this.panel_Top.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
+            this.panel_Top.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
             // 
-            // panel_View
+            // btn_Close
             // 
-            this.panel_View.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel_View.Controls.Add(this.rTbox_View);
-            this.panel_View.Location = new System.Drawing.Point(514, 68);
-            this.panel_View.Name = "panel_View";
-            this.panel_View.Padding = new System.Windows.Forms.Padding(4);
-            this.panel_View.Size = new System.Drawing.Size(273, 324);
-            this.panel_View.TabIndex = 6;
-            // 
-            // panel_Write
-            // 
-            this.panel_Write.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel_Write.Controls.Add(this.rTbox_Write);
-            this.panel_Write.Location = new System.Drawing.Point(235, 68);
-            this.panel_Write.Name = "panel_Write";
-            this.panel_Write.Padding = new System.Windows.Forms.Padding(4);
-            this.panel_Write.Size = new System.Drawing.Size(273, 324);
-            this.panel_Write.TabIndex = 3;
-            // 
-            // rTbox_Write
-            // 
-            this.rTbox_Write.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rTbox_Write.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rTbox_Write.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rTbox_Write.Location = new System.Drawing.Point(4, 4);
-            this.rTbox_Write.Name = "rTbox_Write";
-            this.rTbox_Write.Size = new System.Drawing.Size(263, 314);
-            this.rTbox_Write.TabIndex = 2;
-            this.rTbox_Write.Text = "@Vocabulary /Pronouce/\n*Type\n-Mean\n+SubMean\n=Example+Mean example\n!Another Vocabu" +
-    "lary \n*Type\n-Mean\n+SubMean\n=Example+Mean exanple";
-            // 
-            // lb_Write
-            // 
-            this.lb_Write.BackColor = System.Drawing.Color.DarkCyan;
-            this.lb_Write.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Write.ForeColor = System.Drawing.Color.Transparent;
-            this.lb_Write.Location = new System.Drawing.Point(237, 33);
-            this.lb_Write.Name = "lb_Write";
-            this.lb_Write.Size = new System.Drawing.Size(263, 32);
-            this.lb_Write.TabIndex = 9;
-            this.lb_Write.Text = "Viết từ mới";
-            this.lb_Write.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Close.BackColor = System.Drawing.Color.Firebrick;
+            this.btn_Close.FlatAppearance.BorderSize = 0;
+            this.btn_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Close.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Close.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_Close.Location = new System.Drawing.Point(759, 3);
+            this.btn_Close.Name = "btn_Close";
+            this.btn_Close.Size = new System.Drawing.Size(29, 23);
+            this.btn_Close.TabIndex = 2;
+            this.btn_Close.Text = "X";
+            this.btn_Close.UseVisualStyleBackColor = false;
+            this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
             // 
             // lb_View
             // 
@@ -144,34 +120,27 @@ namespace Dictionary.Forms.Search
             this.lb_View.Text = "Hiện thị";
             this.lb_View.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel_Top
+            // lb_Write
             // 
-            this.panel_Top.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel_Top.Controls.Add(this.btn_Close);
-            this.panel_Top.Controls.Add(this.lb_Title);
-            this.panel_Top.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_Top.Location = new System.Drawing.Point(0, 0);
-            this.panel_Top.Name = "panel_Top";
-            this.panel_Top.Size = new System.Drawing.Size(789, 29);
-            this.panel_Top.TabIndex = 11;
-            this.panel_Top.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
-            this.panel_Top.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
-            this.panel_Top.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
+            this.lb_Write.BackColor = System.Drawing.Color.DarkCyan;
+            this.lb_Write.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_Write.ForeColor = System.Drawing.Color.Transparent;
+            this.lb_Write.Location = new System.Drawing.Point(237, 33);
+            this.lb_Write.Name = "lb_Write";
+            this.lb_Write.Size = new System.Drawing.Size(263, 32);
+            this.lb_Write.TabIndex = 9;
+            this.lb_Write.Text = "Viết từ mới";
+            this.lb_Write.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btn_Close
+            // panel_Rule
             // 
-            this.btn_Close.BackColor = System.Drawing.Color.Firebrick;
-            this.btn_Close.FlatAppearance.BorderSize = 0;
-            this.btn_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Close.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Close.ForeColor = System.Drawing.Color.Transparent;
-            this.btn_Close.Location = new System.Drawing.Point(755, 3);
-            this.btn_Close.Name = "btn_Close";
-            this.btn_Close.Size = new System.Drawing.Size(29, 23);
-            this.btn_Close.TabIndex = 2;
-            this.btn_Close.Text = "X";
-            this.btn_Close.UseVisualStyleBackColor = false;
-            this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
+            this.panel_Rule.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_Rule.Controls.Add(this.rTbox_Rule);
+            this.panel_Rule.Location = new System.Drawing.Point(6, 35);
+            this.panel_Rule.Name = "panel_Rule";
+            this.panel_Rule.Padding = new System.Windows.Forms.Padding(4);
+            this.panel_Rule.Size = new System.Drawing.Size(223, 319);
+            this.panel_Rule.TabIndex = 8;
             // 
             // rTbox_Rule
             // 
@@ -179,7 +148,7 @@ namespace Dictionary.Forms.Search
             this.rTbox_Rule.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rTbox_Rule.Location = new System.Drawing.Point(4, 4);
             this.rTbox_Rule.Name = "rTbox_Rule";
-            this.rTbox_Rule.Size = new System.Drawing.Size(216, 309);
+            this.rTbox_Rule.Size = new System.Drawing.Size(213, 309);
             this.rTbox_Rule.TabIndex = 1;
             this.rTbox_Rule.Text = resources.GetString("rTbox_Rule.Text");
             // 
@@ -198,16 +167,48 @@ namespace Dictionary.Forms.Search
             this.btn_View.UseVisualStyleBackColor = false;
             this.btn_View.Click += new System.EventHandler(this.btn_View_Click);
             // 
+            // panel_View
+            // 
+            this.panel_View.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_View.Controls.Add(this.rTbox_View);
+            this.panel_View.Location = new System.Drawing.Point(514, 68);
+            this.panel_View.Name = "panel_View";
+            this.panel_View.Padding = new System.Windows.Forms.Padding(4);
+            this.panel_View.Size = new System.Drawing.Size(273, 321);
+            this.panel_View.TabIndex = 6;
+            // 
             // rTbox_View
             // 
             this.rTbox_View.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rTbox_View.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rTbox_View.Location = new System.Drawing.Point(4, 4);
             this.rTbox_View.Name = "rTbox_View";
-            this.rTbox_View.Size = new System.Drawing.Size(263, 314);
+            this.rTbox_View.Size = new System.Drawing.Size(263, 311);
             this.rTbox_View.TabIndex = 0;
             this.rTbox_View.Text = "@Vocabulary /Pronouce/\n*Type\n-Mean\n+SubMean\n=Example+Mean example\n!Another Vocabu" +
     "lary \n*Type\n-Mean\n+SubMean\n=Example+Mean exanple\n";
+            // 
+            // panel_Write
+            // 
+            this.panel_Write.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_Write.Controls.Add(this.rTbox_Write);
+            this.panel_Write.Location = new System.Drawing.Point(235, 68);
+            this.panel_Write.Name = "panel_Write";
+            this.panel_Write.Padding = new System.Windows.Forms.Padding(4);
+            this.panel_Write.Size = new System.Drawing.Size(273, 321);
+            this.panel_Write.TabIndex = 3;
+            // 
+            // rTbox_Write
+            // 
+            this.rTbox_Write.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rTbox_Write.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rTbox_Write.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rTbox_Write.Location = new System.Drawing.Point(4, 4);
+            this.rTbox_Write.Name = "rTbox_Write";
+            this.rTbox_Write.Size = new System.Drawing.Size(263, 311);
+            this.rTbox_Write.TabIndex = 2;
+            this.rTbox_Write.Text = "@Vocabulary /Pronouce/\n*Type\n-Mean\n+SubMean\n=Example+Mean example\n!Another Vocabu" +
+    "lary \n*Type\n-Mean\n+SubMean\n=Example+Mean exanple";
             // 
             // btn_Save
             // 
@@ -229,7 +230,7 @@ namespace Dictionary.Forms.Search
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(791, 397);
+            this.ClientSize = new System.Drawing.Size(795, 397);
             this.Controls.Add(this.panel_Main);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -241,11 +242,11 @@ namespace Dictionary.Forms.Search
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
             this.panel_Main.ResumeLayout(false);
+            this.panel_Top.ResumeLayout(false);
+            this.panel_Top.PerformLayout();
             this.panel_Rule.ResumeLayout(false);
             this.panel_View.ResumeLayout(false);
             this.panel_Write.ResumeLayout(false);
-            this.panel_Top.ResumeLayout(false);
-            this.panel_Top.PerformLayout();
             this.ResumeLayout(false);
 
         }

@@ -70,6 +70,16 @@ namespace Dictionary.Classes
             }
             return ret;
         }
+        public static Dictionary<string, int> CloneDictionaryCloningValues
+           (Dictionary<string, int> original)
+        {
+            Dictionary<string, int> ret = new Dictionary<string, int>(original.Count, original.Comparer);
+            foreach (KeyValuePair<string, int> entry in original)
+            {
+                ret.Add(entry.Key, (int)entry.Value);
+            }
+            return ret;
+        }
         public static Dictionary<int, List<string>> CloneDictionaryCloningValues
             (Dictionary<int, List<string>> original)
         {
@@ -78,7 +88,17 @@ namespace Dictionary.Classes
             {
                 ret.Add(entry.Key, (List<string>)CloneList(entry.Value));
             }
-            return null;
+            return ret;
+        }
+        public static Dictionary<int, Dictionary<string, int>> CloneDictionaryCloningValues
+            (Dictionary<int, Dictionary<string, int>> original)
+        {
+            Dictionary<int, Dictionary<string, int>> ret = new Dictionary<int, Dictionary<string, int>>(original.Count, original.Comparer);
+            foreach (KeyValuePair<int, Dictionary<string, int>> entry in original)
+            {
+                ret.Add(entry.Key, CloneDictionaryCloningValues(entry.Value));
+            }
+            return ret;
         }
         #endregion
         #region Audio
@@ -691,7 +711,7 @@ namespace Dictionary.Classes
         {
             var sf = new SaveFileDialog();
             sf.Filter = "txt|*.txt";
-            sf.Title = "Xuất từ điển - " + Resources.Resources.dics[indDic].Name;
+            sf.Title = "Xuất từ điển: " + Resources.Resources.dics[indDic].Name;
             var r = sf.ShowDialog();
             if (r == DialogResult.OK)
             {

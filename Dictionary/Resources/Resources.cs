@@ -27,6 +27,7 @@ namespace Dictionary.Resources
         {
             var ck = true;
             var op = new OpenFileDialog();
+            dics.Clear();
             op.Filter = "txt|*.txt;";
             foreach (var i in user.PathDics)
             {

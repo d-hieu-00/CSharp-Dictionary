@@ -30,13 +30,21 @@ namespace Dictionary.Forms.Search
             rTBox_Word.ScrollBars = RichTextBoxScrollBars.Vertical;
         }
 
-        #region loading combobox
+        #region loading
         public void LoadInit()
         {
             LoadComboBoxDics();
             LoadHistory();
             LoadFacvorite();
             LoadCBoxSize();
+            LoadDetail();
+        }
+        public void LoadDetail()
+        {
+            var nodes = treeView_DetailDic.Nodes;
+            for (int i = 0; i < 26; i++)
+                nodes.Add(((char)(i + 97)).ToString());
+            nodes.Add("(other)");
         }
         public void LoadComboBoxDics()
         {
@@ -53,7 +61,6 @@ namespace Dictionary.Forms.Search
             else
                 cBox_Dics.Enabled = false;
         }
-
         public void LoadHistory()
         {
             var s = flwLayout_HistorySearch;
@@ -72,7 +79,6 @@ namespace Dictionary.Forms.Search
             }
             s.ResumeLayout();
         }
-
         public void LoadFacvorite()
         {
             var s = flwLayout_MaskWord;
@@ -90,12 +96,10 @@ namespace Dictionary.Forms.Search
             }
             s.ResumeLayout();
         }
-
         public void LoadCBoxSize()
         {
             cbox_SizeSearch.SelectedItem = Config.DefaultShowSearch.ToString();
         }
-
         private void rBtn_SelDic_CheckedChanged(object sender, EventArgs e)
         {
             if (rBtn_SelDic.Checked)
@@ -295,9 +299,34 @@ namespace Dictionary.Forms.Search
         #endregion
 
         #region panel detail
+        private int indDicSel = -1;
         private void timerCheckDetailDic_Tick(object sender, EventArgs e)
         {
+            if (indDicSel >= 0)
+            {
+                if (indDicSel >= Resources.Resources.dics.Count)
+                    return;
+                MsgWord dic = Resources.Resources.dics[indDicSel];
+                if (tabPage_DetailDic.Tag != null)
+                    if (Convert.ToInt32(tabPage_DetailDic.Tag) == indDicSel)
+                        return;
+                tabPage_DetailDic.Tag = indDicSel;
+                tabPage_DetailDic.SuspendLayout();
 
+                var nodes = treeView_DetailDic.Nodes;
+                for (int i = 0; i < 27; i++)
+                {
+                    nodes[i].Nodes.Clear();
+                    for (int j = 0; j < dic.WordsAlphabet[i].Count; j++)
+                    {
+                        nodes[i].Nodes.Add(dic.WordsAlphabet[i][j].Vocabulary);
+                        nodes[i].Nodes[j].Tag = j;
+                    }
+                }
+                tabPage_DetailDic.ResumeLayout();
+            }
+            else
+                indDicSel = cBox_Dics.SelectedIndex;
         }
         #endregion
 
@@ -469,21 +498,20 @@ namespace Dictionary.Forms.Search
         }
         #endregion
 
-        #region save
+        #region save, funciton dics
         public bool _needSave = false;
-        public bool _needReload = false;
+        public bool _needReLoadWord = false;
         private void timer_CheckSave_Tick(object sender, EventArgs e)
         {
             if (_needSave != btn_SaveDics.Enabled)
                 btn_SaveDics.Enabled = _needSave;
-            if (_needReload)
+            if (_needReLoadWord)
             {
-                _needReload = false;
+                _needReLoadWord = false;
                 var s = rTBox_Word.Name.Split('\t');
                 Utility.LoadWord(s[0], Convert.ToInt32(s[1]), Convert.ToInt32(s[2]), rTBox_Word);
             }
         }
-        #endregion
 
         private void btn_ResotreSetting_Click(object sender, EventArgs e)
         {
@@ -532,5 +560,21 @@ namespace Dictionary.Forms.Search
                 LoadComboBoxDics();
             }
         }
+
+        private void btn_EditDics_Click(object sender, EventArgs e)
+        {
+            var indDic = cBox_Dics.SelectedIndex;
+            (new DicForm(indDic)).Show();
+        }
+
+        private void btn_SaveDics_Click(object sender, EventArgs e)
+        {
+            foreach (var i in Resources.Resources.dics)
+                i.Save();
+            Resources.Resources.user.Save();
+            _needSave = false;
+        }
+
+        #endregion
     }
 }

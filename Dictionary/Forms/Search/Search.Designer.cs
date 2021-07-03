@@ -506,6 +506,7 @@ namespace Dictionary.Forms.Search
             this.btn_SaveDics.TabIndex = 12;
             this.btn_SaveDics.Text = "Lưu thay đổi";
             this.btn_SaveDics.UseVisualStyleBackColor = false;
+            this.btn_SaveDics.Click += new System.EventHandler(this.btn_SaveDics_Click);
             // 
             // btn_ReloadDics
             // 
@@ -548,6 +549,7 @@ namespace Dictionary.Forms.Search
             this.btn_EditDics.TabIndex = 15;
             this.btn_EditDics.Text = "Sửa từ điển";
             this.btn_EditDics.UseVisualStyleBackColor = false;
+            this.btn_EditDics.Click += new System.EventHandler(this.btn_EditDics_Click);
             // 
             // btn_AddWord
             // 
@@ -687,6 +689,7 @@ namespace Dictionary.Forms.Search
             // 
             // timerCheckDetailDic
             // 
+            this.timerCheckDetailDic.Enabled = true;
             this.timerCheckDetailDic.Tick += new System.EventHandler(this.timerCheckDetailDic_Tick);
             // 
             // timerCheckMaskWord

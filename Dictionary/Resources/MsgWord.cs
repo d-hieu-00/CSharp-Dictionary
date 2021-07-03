@@ -1,9 +1,11 @@
 ﻿using Dictionary.Resources.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Dictionary.Resources
 {
@@ -27,7 +29,7 @@ namespace Dictionary.Resources
             }
         }
 
-        #region function load data
+        #region function data
         public bool LoadData()
         {
             /*try
@@ -79,6 +81,37 @@ namespace Dictionary.Resources
                 foreach (var w in i)
                     tmp.AddRange(Classes.Utility.WriteWord(w));
             return tmp.ToArray();
+        }
+        public void Save()
+        {
+            if (File.Exists(Path))
+            {
+                Resources.main.searchForm.Invoke(new MethodInvoker(delegate ()
+                {
+                    Resources.main.searchForm.Cursor = Cursors.WaitCursor;
+                    File.WriteAllLines(Path, ExportString());
+                    Resources.main.searchForm.Cursor = Cursors.Default;
+                }));
+            }
+            else
+            {
+                var sf = new SaveFileDialog();
+                sf.Filter = "txt|*.txt";
+                sf.Title = "Lưu từ điển: " + Name;
+                var r = sf.ShowDialog();
+                if (r == DialogResult.OK)
+                {
+                    if (File.Exists(sf.FileName))
+                        Resources.main.searchForm.Invoke(new MethodInvoker(delegate ()
+                        {
+                            Resources.main.searchForm.Cursor = Cursors.WaitCursor;
+                            File.WriteAllLines(sf.FileName, ExportString());
+                            Resources.main.searchForm.Cursor = Cursors.Default;
+                        }));
+                    else
+                        MessageBox.Show("Lỗi đường dẫn", "Xuất từ điển", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
         #endregion
 

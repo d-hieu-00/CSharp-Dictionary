@@ -73,6 +73,12 @@
     <Compile Include="Forms\Practice\PracticeForm.Designer.cs">
       <DependentUpon>PracticeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Search\DicForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Search\DicForm.Designer.cs">
+      <DependentUpon>DicForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Search\Search.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Practice\PracticeForm.resx">
       <DependentUpon>PracticeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Search\DicForm.resx">
+      <DependentUpon>DicForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Search\Search.resx">
       <DependentUpon>Search.cs</DependentUpon>

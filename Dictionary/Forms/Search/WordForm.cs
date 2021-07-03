@@ -55,7 +55,7 @@ namespace Dictionary.Forms.Search
             {
                 Resources.Resources.dics[indDic].Update(key, val,
                     Classes.Utility.ReadWord(new List<string>(rTbox_Write.Text.Split('\n'))));
-                Resources.Resources.main.searchForm._needReload = true;
+                Resources.Resources.main.searchForm._needReLoadWord = true;
             }
             else
             {
