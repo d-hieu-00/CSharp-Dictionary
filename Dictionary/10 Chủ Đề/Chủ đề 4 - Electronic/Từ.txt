@@ -1,0 +1,128 @@
+@disk /disk/ (disc) /disk/
+*  danh từ
+- (thể dục,thể thao) đĩa
+- đĩa hát
+- đĩa, vật hình đĩa, bộ phận hình đĩa
+
+@facilitate /fə'siliteit/
+*  ngoại động từ
+- làm cho dễ dàng; làm cho thuận tiện
+
+@network /'netwə:k/
+*  danh từ
+- lưới, đồ dùng kiểu lưới
+=a network purse+ cái túi lưới đựng tiền
+- mạng lưới, hệ thống
+=a network of railways+ mạng lưới đường sắt
+=a network of canals+ hệ thống sông đào
+- (kỹ thuật) hệ thống mắc cáo
+- (raddiô) mạng lưới truyền thanh
+
+@popularity /,pɔpju'læriti/
+*  danh từ
+- tính đại chúng
+- tính phổ biến
+=the popularity of table tennis+ tính phổ biến của môn bóng đá
+- sự nổi tiếng, sự yêu mến của nhân dân; sự ưa thích của quần chúng
+=to win popularity+ được quần chúng ưa thích, được nhân dân yêu mến
+
+
+@process /process/
+*  danh từ
+- quá trình, sự tiến triển
+=the process of economic rehabilitation+ quá trình khôi phục kinh tế
+- sự tiến hành
+=in process of construction+ đang tiến hành xây dựng
+- phương pháp, cách thức (sản xuất, chế biến)
+=the Bessemer process of making steel+ phương pháp sản xuất thép Be-xơ-me
+- (pháp lý) việc tố tụng; trát đòi, lệnh gọi của toà án
+- (sinh vật học) u lồi, bướu (ở cây cối, thân súc vật)
+- (ngành in) phép in ximili (in ảnh), phép in ảnh chấm
+*  ngoại động từ
+- chế biến gia công (theo một phương pháp)
+- kiện (ai)
+- in ximili (ảnh, tranh)
+*  nội động từ
+- (thông tục) diễu hành, đi thành đoàn, đi thành đám rước
+
+@replace /ri'pleis/
+*  ngoại động từ
+- thay thế
+- đặt lại chỗ cũ
+=to replace borrowed books+ để lại vào chỗ cũ sổ sách đã mượn
+
+@revolution /,revə'lu:ʃn/
+*  danh từ
+- vòng, tua
+=revolutions per minute+ số vòng quay mỗi phút
+- (toán học); (thiên văn học) sự xoay vòng
+- cuộc cách mạng
+=the socialist revolution+ cuộc cách mạng xã hội chủ nghĩa
+=the national democratic revolution+ cuộc cách mạng dân tộc dân chủ
+
+@sharp /ʃɑ:p/
+*  tính từ
+- sắt, nhọn, bén
+=a sharp knife+ dao sắc
+=a sharp summit+ đỉnh nhọn
+- rõ ràng, rõ rệt, sắc nét
+=sharp distinction+ sự phân biệt rõ ràng
+- thình lình, đột ngột
+=sharp turn+ chỗ ngoặt đột ngột
+- hắc (mùi); chua (rượu); rít the thé (giọng nói); cay nghiệt, độc địa, gay gắt (lời nói); ác liệt (cuộc đấu tranh); dữ dội (sự đau đớn); lạnh buốt (gió...); chói (tia sáng)
+- tinh, thính, thông minh
+=sharp eyes+ mắt tinh
+=sharp ears+ tai thính
+=a sharp child+ đứa trẻ thông minh
+- láu lỉnh, ma mảnh, bất chính
+=sharp practices+ thủ đoạn bất lương
+- nhanh, mạnh
+=to take a sharp walk+ đi bộ rảo bước
+- (ngôn ngữ học) điếc, không kêu
+- (âm nhạc) thăng
+- (từ Mỹ,nghĩa Mỹ),  (từ lóng) diện, bảnh, đẹp; đẹp trai
+!as sharp as a needle
+- thông minh sắc sảo
+!sharp's the word!
+- nhanh lên! chóng lên!
+!to keep a sharp look-out
+- (xem) look-out
+*  danh từ
+- kim khâu mũi thật nhọn
+- (ngôn ngữ học) phụ âm điếc
+- (âm nhạc) nốt thăng; dấu thăng
+- (thông tục) người lừa đảo, người cờ gian bạc lận
+-(đùa cợt) chuyên gia, người thạo (về cái gì)
+- (số nhiều) (nông nghiệp) tấm, hạt tấm
+*  phó từ
+- sắc cạnh, sắc nhọn
+- đúng
+=at six o'clock sharp+ (lúc) đúng sáu giờ
+- thình lình, đột ngột
+=to turn sharp round+ quay lại đột ngột
+- (âm nhạc) cao
+=ti subg sharp+ hát cao
+!to look sharp
+- (xem) look
+
+@skill /skil/
+*  danh từ
+- sự khéo léo, sự khéo tay, sự tinh xảo; kỹ năng, kỹ xảo
+*  nội động từ
+- (từ cổ,nghĩa cổ) đáng kể, thành vấn đề
+=it skills not+ không đáng kể, không thành vấn đề
+
+@software
+* danh từ
+- phần mềm (của máy tính)
+
+@store
+- nhà kho; (máy tính) nhớ
+
+
+@technical /'teknikəl/
+*  tính từ
+- (thuộc) kỹ thuật, chuyên môn
+=technical school+ trường kỹ thuật
+=technical terms+ thuật ngữ kỹ thuật
+=difficulties+ những khó khăn về chuyên môn
