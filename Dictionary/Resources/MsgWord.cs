@@ -1,9 +1,11 @@
 ﻿using Dictionary.Resources.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Dictionary.Resources
 {
@@ -27,121 +29,12 @@ namespace Dictionary.Resources
             }
         }
 
-        #region function load data
-        public void AddWord(List<string> word)
-        {
-            Word w = new Word();
-            for (var i=0; i<word.Count; i++)
-            {
-                if (word[i] != "")
-                {
-                    if (word[i][0] == '@')
-                    {
-                        var t = word[i].Remove(0, 1).Split('/');
-                        if (t.Length > 1)
-                            w.Pronounce = '/' + t[t.Length - 2] + '/';
-                        w.Vocabulary = "";
-                        for (int __i = 0; __i < t.Length - 3; __i++)
-                            w.Vocabulary += t[__i];
-                        w.Vocabulary = w.Vocabulary.Trim();
-                        w.Audio = Classes.Utility.GetAudioByWord(t[0]);
-                    }
-                    if (word[i][0] == '*')
-                    {
-                        Mean _m = new Mean();
-                        var j = i + 1;
-
-                        _m.TypeWord = word[i].Remove(0, 1).Trim();
-
-                        while (j < word.Count)
-                        {
-                            if (word[j] != "")
-                            {
-                                if (word[j][0] == '-')
-                                {
-                                    _m.Meanings.Add(word[j].Remove(0, 1).Trim());
-                                    _m.Examples.Add(_m.Meanings.Count - 1, new List<string>());
-                                }
-                                else if (word[j][0] == '=')
-                                {
-                                    try
-                                    {
-                                        _m.Examples[_m.Meanings.Count - 1].Add(word[j].Remove(0, 1).Trim());
-                                    }
-                                    catch (Exception)
-                                    {
-                                        _m.Examples.Add(_m.Meanings.Count - 1, new List<string>());
-                                        _m.Examples[_m.Meanings.Count - 1].Add(word[j].Remove(0, 1).Trim());
-                                    }
-                                }
-                                else
-                                    break;
-                            }
-                            j++;
-                        }
-                        w.Means.Add(_m);
-                        i = j - 1;
-                    }
-                    if (word[i][0] == '!')
-                    {
-                        Word _w = new Word();
-                        Mean _m = new Mean();
-                        var j = i + 1;
-                        _w.Vocabulary = word[i].Remove(0, 1).Trim();
-
-                        while (j < word.Count)
-                        {
-                            if (word[j] != "")
-                            {
-                                if (word[j][0] == '-')
-                                {
-                                    _m.Meanings.Add(word[j].Remove(0, 1).Trim());
-                                    _m.Examples.Add(_m.Meanings.Count - 1, new List<string>());
-                                }
-                                else if (word[j][0] == '=')
-                                {
-                                    try
-                                    {
-                                        _m.Examples[_m.Meanings.Count - 1].Add(word[j].Remove(0, 1).Trim());
-                                    }
-                                    catch (Exception)
-                                    {
-                                        _m.Examples.Add(_m.Meanings.Count - 1, new List<string>());
-                                        _m.Examples[_m.Meanings.Count - 1].Add(word[j].Remove(0, 1).Trim());
-                                    }
-                                }
-                                else
-                                    break;
-                            }
-                            j++;
-                        }
-                        _w.Means.Add(_m);
-                        w.SubWords.Add(_w);
-                        i = j - 1;
-                    }
-                }
-            }
-
-            if (w.Vocabulary == "" || w.Vocabulary == null)
-                return;
-            int letter = w.Vocabulary.ToLower()[0];
-            if (letter - 97 < 0 || letter - 97 > 25)
-            {
-                WordsAlphabet[26].Add(w);
-                Maps[26].Add(w.Vocabulary, WordsAlphabet[26].Count - 1);
-            }
-            else
-            {
-                WordsAlphabet[letter - 97].Add(w);
-                Maps[letter - 97].Add(w.Vocabulary, WordsAlphabet[letter - 97].Count - 1);
-            }
-
-        }
+        #region function data
         public bool LoadData()
         {
-            try
-            {
-                string[] dataLines = System.IO.File.ReadAllLines(Path);
+            /*try
+            {*/
+                string[] dataLines = System.IO.File.ReadAllLines(@Path);
                 List<string> word = null;
                 foreach (string line in dataLines)
                 {
@@ -156,44 +49,111 @@ namespace Dictionary.Resources
                             }
                             word = new List<string>();
                         }
+                        if (word == null)
+                            break;
                         word.Add(line);
                     }
                 }
                 return true;
-            }
+            /*}
             catch (Exception)
             {
                 return false;
+            }*/
+        }
+        public bool Reload()
+        {
+            WordsAlphabet.Clear();
+            Maps.Clear();
+            for (var i = 0; i < 27; i++)
+            {
+                List<Word> tmp = new List<Word>();
+                Dictionary<string, int> tmpDic = new Dictionary<string, int>();
+                WordsAlphabet.Add(tmp);
+                Maps.Add(tmpDic);
+            }
+            return LoadData();
+        }
+        public string[] ExportString()
+        {
+            List<string> tmp = new List<string>();
+            foreach (var i in WordsAlphabet)
+                foreach (var w in i)
+                    tmp.AddRange(Classes.Utility.WriteWord(w));
+            return tmp.ToArray();
+        }
+        public void Save()
+        {
+            if (File.Exists(Path))
+            {
+                Resources.main.searchForm.Invoke(new MethodInvoker(delegate ()
+                {
+                    Resources.main.searchForm.Cursor = Cursors.WaitCursor;
+                    File.WriteAllLines(Path, ExportString());
+                    Resources.main.searchForm.Cursor = Cursors.Default;
+                }));
+            }
+            else
+            {
+                var sf = new SaveFileDialog();
+                sf.Filter = "txt|*.txt";
+                sf.Title = "Lưu từ điển: " + Name;
+                var r = sf.ShowDialog();
+                if (r == DialogResult.OK)
+                {
+                    if (File.Exists(sf.FileName))
+                        Resources.main.searchForm.Invoke(new MethodInvoker(delegate ()
+                        {
+                            Resources.main.searchForm.Cursor = Cursors.WaitCursor;
+                            File.WriteAllLines(sf.FileName, ExportString());
+                            Resources.main.searchForm.Cursor = Cursors.Default;
+                        }));
+                    else
+                        MessageBox.Show("Lỗi đường dẫn", "Xuất từ điển", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
         #endregion
-
 
         #region search
         public Dictionary<string, int> SearchByFristString(string q)
         {
             q = q.ToLower();
-
+            int c = 0;
             Dictionary<string, int> search = new Dictionary<string, int>();
+            if (q == null || q == "")
+                return search;
             int letter = q[0];
             if (letter - 97 < 0 || letter - 97 > 25)
             {
                 foreach(var i in Maps[26])
-                    if (i.Key.ToLower().Contains(q))
+                {
+                    if (i.Key.ToLower().StartsWith(q))
+                    {
                         search.Add(i.Key, i.Value);
+                        if (++c >= Classes.Config.DefaultShowSearch)
+                            break;
+                    }
+                }
             }
             else
             {
                 foreach (var i in Maps[letter - 97])
-                    if (i.Key.ToLower().Contains(q))
+                {
+                    if (i.Key.ToLower().StartsWith(q))
+                    {
                         search.Add(i.Key, i.Value);
+                        if (++c >= Classes.Config.DefaultShowSearch)
+                            break;
+                    }
+                }
             }
             return search;
         }
         public Dictionary<string, int> SearchByString(string q)
         {
             q = q.ToLower();
-
+            int c = 0;
             Dictionary<string, int> search = new Dictionary<string, int>();
             int ind = q[0] - 97;
             if (ind < 0 || ind > 25)
@@ -202,10 +162,71 @@ namespace Dictionary.Resources
             {
                 if (i != ind)
                     foreach (var k in Maps[i])
+                    {
                         if (k.Key.ToLower().Contains(q))
+                        {
+                            if (++c >= Classes.Config.DefaultShowSearch)
+                                break;
                             search.Add(k.Key, k.Value);
+                        }
+                    }
             }
             return search;
+        }
+        #endregion
+
+        #region add, get, remove, update word
+        public bool AddWord(List<string> word)
+        {
+            Word w = Classes.Utility.ReadWord(word);
+            bool ck = true;
+            if (w.Vocabulary == "" || w.Vocabulary == null)
+                return false;
+            int letter = w.Vocabulary.ToLower()[0];
+            if (letter - 97 < 0 || letter - 97 > 25)
+            {
+                if (!Maps[26].ContainsKey(w.Vocabulary))
+                {
+                    WordsAlphabet[26].Add(w);
+                    Maps[26].Add(w.Vocabulary, WordsAlphabet[26].Count - 1);
+                }
+                else
+                    ck = false;
+            }
+            else
+            {
+                if (!Maps[letter - 97].ContainsKey(w.Vocabulary))
+                {
+                    WordsAlphabet[letter - 97].Add(w);
+                    Maps[letter - 97].Add(w.Vocabulary, WordsAlphabet[letter - 97].Count - 1);
+                }
+                else
+                    ck = false;
+            }
+            return ck;
+        }
+        public Word GetWord(string key, int val)
+        {
+            int ind = key.ToLower()[0] - 97;
+            if (ind < 0 || ind > 25)
+                ind = 26;
+            return WordsAlphabet[ind][val];
+        }
+        public void Remove(string key, int val)
+        {
+            int ind = key.ToLower()[0] - 97;
+            if (ind < 0 || ind > 25)
+                ind = 26;
+            var w = WordsAlphabet[ind][val];
+            WordsAlphabet[ind].Remove(w);
+            Maps[ind].Remove(key);
+        }
+        public void Update(string key, int val, Word w)
+        {
+            int ind = key.ToLower()[0] - 97;
+            if (ind < 0 || ind > 25)
+                ind = 26;
+            WordsAlphabet[ind][val] = w;
         }
         #endregion
     }

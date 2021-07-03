@@ -18,8 +18,15 @@ namespace Dictionary
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Resources.Resources.InitRes();
-            Application.Run(Resources.Resources.main.mainForm);
+            if (Resources.Resources.InitRes())
+            {
+                Application.Run(Resources.Resources.main.mainForm);
+            }
+            else
+            {
+                MessageBox.Show("Lỗi mở tệp cấu hình", "Lỗi mở ứng dụng", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
         }
     }
 }

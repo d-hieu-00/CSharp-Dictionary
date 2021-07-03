@@ -32,7 +32,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NAudio, Version=1.8.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.1.8.5\lib\net35\NAudio.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
@@ -67,6 +73,12 @@
     <Compile Include="Forms\Practice\PracticeForm.Designer.cs">
       <DependentUpon>PracticeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Search\DicForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Search\DicForm.Designer.cs">
+      <DependentUpon>DicForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Search\Search.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,10 +88,38 @@
     <Compile Include="Forms\Search\UserControls\s_ButtonRound.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Forms\Search\UserControls\s_RichTextBoxOnlyView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Search\UserControls\s_RowHistory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Search\UserControls\s_RowHistory.Designer.cs">
+      <DependentUpon>s_RowHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Search\UserControls\s_RowMaskWord.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Search\UserControls\s_RowMaskWord.Designer.cs">
+      <DependentUpon>s_RowMaskWord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Search\UserControls\s_RowSearch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Search\UserControls\s_RowSearch.Designer.cs">
+      <DependentUpon>s_RowSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Search\WordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Search\WordForm.Designer.cs">
+      <DependentUpon>WordForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\MainRes.cs" />
     <Compile Include="Resources\Model\Mean.cs" />
+    <Compile Include="Resources\Model\User.cs" />
     <Compile Include="Resources\Model\Word.cs" />
     <Compile Include="Resources\MsgGames.cs" />
     <Compile Include="Resources\MsgWord.cs" />
@@ -93,8 +133,23 @@
     <EmbeddedResource Include="Forms\Practice\PracticeForm.resx">
       <DependentUpon>PracticeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Search\DicForm.resx">
+      <DependentUpon>DicForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Search\Search.resx">
       <DependentUpon>Search.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Search\UserControls\s_RowHistory.resx">
+      <DependentUpon>s_RowHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Search\UserControls\s_RowMaskWord.resx">
+      <DependentUpon>s_RowMaskWord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Search\UserControls\s_RowSearch.resx">
+      <DependentUpon>s_RowSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Search\WordForm.resx">
+      <DependentUpon>WordForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -104,7 +159,9 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -123,6 +180,9 @@
     <Folder Include="Forms\Practice\UserControl\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="icon.ico" />
+    <None Include="Resources\Cat_roll.gif" />
+    <None Include="Resources\icon.png" />
     <Content Include="10 Chủ Đề\Chủ đề 1 - Contract\Hình\abide by.jpg" />
     <Content Include="10 Chủ Đề\Chủ đề 1 - Contract\Hình\agreement.jpg" />
     <Content Include="10 Chủ Đề\Chủ đề 1 - Contract\Hình\assurance.jpg" />
