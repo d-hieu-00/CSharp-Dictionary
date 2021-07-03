@@ -1,72 +1,37 @@
 @access
-- (Tech) truy cập, truy tìm, truy xuất-nhập, tồn thủ [TQ]; lối vào; tiếp cận; viết (vào)-đọc (ra), tồn thủ; tìm vào
+- (Tech) truy cập, truy tìm, truy xuất-nhập
 
 @allocate
-- (Tech) cấp, phân định (đ)\
+- (Tech) cấp, phân định 
 
 @compatible
 - (Tech) tương thích, tương hợp
 
-@delete [DEL] character
-- (Tech) ký tự xóa = erase character
+@delete 
+- (Tech) ký tự xóa 
 
 @display
-- (Tech) bộ hiển thị, màn hình [TV/máy điện toán]; hiển thị [TV/máy điện toán], biểu thị (d); trình bầy (d); hiển thị [TV/máy điện toán], biểu thị, trình bầy (đ)
+- (Tech) bộ hiển thị, màn hình [TV/máy điện toán]; hiển thị [TV/máy điện toán]
 
 @duplicate
-- bản sao || tăng đôi
+- bản sao, tăng đôi
 
 @failure
-- (máy tính) chỗ hỏng; (cơ học) sự phá hỏng; (toán kinh tế) sự phá sản; (lý thuyết trò chơi) sự thất bại
-- power f. (máy tính) gián đoạn trong việc cấp năng lượng 
+- (máy tính) chỗ hỏng; (cơ học) sự phá hỏng
 
 @search /sə:tʃ/
 *  danh từ
-- sự nhìn để tìm, sự sờ để tìm; sự khám xét, sự lục soát
-=right of search+ (pháp lý) quyền khám tàu
-=search of a house+ sự khám nhà
-- sự điều tra, sự nghiên cứu
-!to be in search of something
-- đang đi tìm cái gì
-!to make a search for someone
-- đi tìm ai
-*  động từ
-- nhìn để tìm, sờ để tìm; khám xét, lục soát
-=to search the house for weapons+ khám nhà tìm vũ khí
-- dò, tham dò
-=to search men's hearts+ thăm dò lòng người
-=to search a wound+ dò một vết thương
-- điều tra
-- bắn xuyên vào tận ngách (hầm...)
-- (từ cổ,nghĩa cổ) tìm tòi, tìm cho ra
-!to search out
-- tìm tòi
-- tìm thấy
-!search me!
-- (từ Mỹ,nghĩa Mỹ),  (thông tục) nào tôi có biết!, làm sao mà tôi biết được!
+- tìm kiếm, tra cứu
 
 @shutdown
 - sự đóng cửa, sự kết thúc
 
 @program(me)
 - chương trình, kế hoạch
-- computer p. (máy tính) chương trình tính 
-- control p. chương trình kiểm tra
-- deal p. (máy tính) chương trình được giữ lâu
-- diagnostic p. (máy tính) chương trình chuẩn đoán
-- explicit p. (máy tính) chương trình chi tiết (được chia thành những phép tính cơ bản)
-- infinite p. chương trình vô hạn
-- superconsistent p. chương trình tương thích mạnh 
 
 @network /'netwə:k/
 *  danh từ
-- lưới, đồ dùng kiểu lưới
-=a network purse+ cái túi lưới đựng tiền
 - mạng lưới, hệ thống
-=a network of railways+ mạng lưới đường sắt
-=a network of canals+ hệ thống sông đào
-- (kỹ thuật) hệ thống mắc cáo
-- (raddiô) mạng lưới truyền thanh
 
 @chip
-- (Tech) chíp, phiến tinh thể, miếng (đơn kết tinh); tinh thể; đơn thể
+- (Tech) chíp, phiến tinh thể

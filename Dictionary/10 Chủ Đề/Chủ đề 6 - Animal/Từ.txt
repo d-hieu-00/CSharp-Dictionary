@@ -1,45 +1,10 @@
 @fox /fɔks/
 *  danh từ
 - (động vật học) con cáo
-- bộ da lông cáo
-- người xảo quyệt; người láu cá, người ranh ma
-- (thiên văn học) chòm sao con Cáo (ở phương bắc)
-- (từ Mỹ,nghĩa Mỹ),  (từ lóng) sinh viên năm thứ nhất
-!to set a fox to kee[ one's geese
-- nuôi ong tay áo
-*  ngoại động từ
-- (từ lóng) dùng mưu mẹo để đánh lừa, dở trò láu cá để đánh lừa
-- làm (cho những trang sách...) có những vết ố nâu (như lông cáo)
-- làm chua (bia...) bằng cách cho lên men
-- (từ Mỹ,nghĩa Mỹ) vá mũi (giày) bằng miếng da mới
-*  nội động từ
-- dùng mưu mẹo; dở trò xảo quyệt, dở trò láu cá để đánh lừa
-- có những vết ố nâu (trang sách)
-- bị chua vì lên men (bia...)
 
 @lion /'laiən/
 *  danh từ
 - con sư tử
-- (thiên văn học) (Lion) cung Sư tử
-- (số nhiều) cảnh lạ; vật lạ, vật quý, vật hiếm
-=to see the lions+ đi xem những vật lạ; đi thăm những cảnh lạ (ở một nơi nào)
-- người nổi danh, người có tiếng; người tai mắt, người được nhiều nơi mời mọc
-- người gan dạ
-- (Lion) quốc huy nước Anh
-=the British Lion+ nước Anh nhân cách hoá
-!lion in the path (way)
-- vật chướng ngại, vật chướng ngại tưởng tượng
-!lion's share
-- phần lớn nhất, phần của kẻ mạnh
-!lion's skin
-- sự can đảm ngoài mặt
-!lion of the day
-- người mà thiên hạ đều chú ý
-!to rush into the lion's mouth
-!to put (run) one's head into the lion's mouth
-- lao đầu vào chỗ nguy hiểm, lao đầu vào chỗ chết
-!to twist the lion's tail
-- chửi (chế giễu) nước Anh (nhà báo ngoại quốc, nhất là Mỹ)
 
 
 @rhinoceros /rai'nɔsərəs/
@@ -49,53 +14,22 @@
 @wolf /wulf/
 *  danh từ,  số nhiều wolves
 - (động vật học) chó sói
-- người tham tàn, người độc ác, người hung tàn
-- (từ Mỹ,nghĩa Mỹ),  (từ lóng) người hay chim gái
-!to be as hungry as a wolf
-- đói ngấu
-!to cry wolf
-- (xem) cry
-!to have (hold) the wolf by the ears
-- ở vào tình thế nguy hiểm, tiến lui đều khó
-!to keep the wolf from the door
-- đủ nuôi sống bản thân và gia đình
-!wolf in sheep's clothing
-- chó sói đội lốt cừu; kẻ giả nhân giả nghĩa, kẻ khẩu phật tâm xà
-*  ngoại động từ
-- ngốn, nuốt ngấu nghiến
-=to wolf [down] one's food+ nuốt ngấu nghiến đồ ăn
 
 @deer /diə/
 *  danh từ,  số nhiều không đổi
 - (động vật học) hươu, nai
-=small deer+ những con vật nhỏ lắt nhắt
-- những vật nhỏ bé lắt nhắt
 
 @shark /ʃɑ:k/
 *  danh từ
 - (động vật học) cá nhám, cá mập
-=man-eating shark+ cá mập trắng
-- kẻ tham lam; kẻ bất lương; kẻ lừa đảo
--(ngôn ngữ nhà trường),  (từ lóng) tay cừ, tay chiến
-*  động từ
-- lừa gạt; làm ăn bất chính
-=to shark for a living+ lừa đảo để số
-- ngốn nuốt
 
 @turtle /'tə:tl/
 *  danh từ
-- (như) turtle-dove
-- (động vật học) rùa ((thường) chỉ rùa biển)
-- thịt rùa
-!to turn turtle
-- (hàng hải),  (từ lóng) lập úp (tàu, thuyền)
-*  nội động từ
-- câu rùa, bắt rùa
+- con rùa
 
 @penguin /'peɳgwin/
 *  danh từ
-- (động vật học) chim cụt
-- chim lặn anca
+- (động vật học) chim cánh cụt
 
 @squirrel /'skwirəl/
 *  danh từ
@@ -104,35 +38,11 @@
 @dolphin /'dɔlfin/
 *  danh từ
 - (động vật học) cá heo mỏ
-- hình cá uốn cong mình (ở huy hiệu); ở bản khắc...)
-- cọc buộc thuyền; cọc (để) cuốn dây buộc thuyền; phao
 
 @bee /bi:/
 *  danh từ
 - (động vật học) con ong
-=to keep bees+ nuôi ong
-- nhà thơ
-- người bận nhiều việc
-- (từ Mỹ,nghĩa Mỹ) buổi vui chơi tập thể, buổi lao động tập thể
-!busy as a bee
-- hết sức bận
-!to have a bee in one's bonnet
-- nung nấu trong óc một ý nghĩ gì; có một cái gì ám ảnh trong đầu
-!to have one's head full of bees; to have been in the hesd (brains)
-- ấp ủ trong lòng những mộng tưởng viễn vông
-!to put the bee on
-- (từ Mỹ,nghĩa Mỹ),  (từ lóng) nài xin, xin lải nhải
 
 @elephant /'elifənt/
 *  danh từ
 - (động vật học) con voi
-- khổ giấy 70 cm x 57, 5 cm
-=double elephant+ khổ giấy 1 m x 77 cm
-- (Elephant) (từ Mỹ,nghĩa Mỹ) đảng Cộng hoà
-- sắt vòm
-!to see the elephant
-!to get a look at the elephant
-- đi thăm những kỳ quan (của một thành phố...)
-- biết đời, biết thiên hạ
-!white elephant
-- (xem) white
