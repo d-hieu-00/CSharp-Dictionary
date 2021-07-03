@@ -55,7 +55,9 @@ namespace Dictionary.Forms.Search
                 cBox_Dics.Items.Add(i.Name);
             }
             if (cBox_Dics.Items.Count > 0)
+            {
                 cBox_Dics.SelectedIndex = 0;
+            }
             if (rBtn_SelDic.Checked)
                 cBox_Dics.Enabled = true;
             else
@@ -299,43 +301,39 @@ namespace Dictionary.Forms.Search
         #endregion
 
         #region panel detail
-        private int indDicSel = -1;
-        private void timerCheckDetailDic_Tick(object sender, EventArgs e)
-        {
-            if (indDicSel >= 0)
-            {
-                if (indDicSel >= Resources.Resources.dics.Count)
-                    return;
-                MsgWord dic = Resources.Resources.dics[indDicSel];
-                if (tabPage_DetailDic.Tag != null)
-                    if (Convert.ToInt32(tabPage_DetailDic.Tag) == indDicSel)
-                        return;
-                tabPage_DetailDic.Tag = indDicSel;
-                //tabPage_DetailDic.SuspendLayout();
-
-                var nodes = treeView_DetailDic.Nodes;
-                for (int i = 0; i < 27; i++)
-                {
-                    nodes[i].Nodes.Clear();
-                    for (int j = 0; j < dic.WordsAlphabet[i].Count; j++)
-                    {
-                        nodes[i].Nodes.Add(dic.WordsAlphabet[i][j].Vocabulary);
-                        nodes[i].Nodes[j].Tag = j;
-                    }
-                }
-                //tabPage_DetailDic.ResumeLayout();
-            }
-            else
-                indDicSel = cBox_Dics.SelectedIndex;
-        }
         private void treeView_DetailDic_AfterSelect(object sender, TreeViewEventArgs e)
         {
             if (treeView_DetailDic.SelectedNode != null && treeView_DetailDic.SelectedNode.Tag != null)
             {
                 var val = Convert.ToInt32(treeView_DetailDic.SelectedNode.Tag);
                 var key = treeView_DetailDic.SelectedNode.Text;
-                Utility.LoadWord(key, val, indDicSel, rTBox_Word);
+                Utility.LoadWord(key, val, cBox_Dics.SelectedIndex, rTBox_Word);
             }
+        }
+
+        private void btn_LoadDetail_Click(object sender, EventArgs e)
+        {
+            tabPage_DetailDic.SuspendLayout();
+            var indDicSel = cBox_Dics.SelectedIndex;
+            if (indDicSel >= Resources.Resources.dics.Count)
+                return;
+            Cursor = Cursors.WaitCursor;
+            MsgWord dic = Resources.Resources.dics[indDicSel];
+            var nodes = treeView_DetailDic.Nodes;
+            tabPage_DetailDic.Tag = indDicSel;
+
+            nodes.Clear();
+            LoadDetail();
+            for (int i = 0; i < 27; i++)
+            {
+                for (int j = 0; j < dic.WordsAlphabet[i].Count; j++)
+                {
+                    nodes[i].Nodes.Add(dic.WordsAlphabet[i][j].Vocabulary);
+                    nodes[i].Nodes[j].Tag = j;
+                }
+            }
+            Cursor = Cursors.Default;
+            tabPage_DetailDic.ResumeLayout();
         }
         #endregion
 
@@ -585,6 +583,5 @@ namespace Dictionary.Forms.Search
         }
 
         #endregion
-
     }
 }

@@ -56,6 +56,7 @@ namespace Dictionary.Forms.Search
             this.btn_DelAllHistory = new System.Windows.Forms.Button();
             this.flwLayout_HistorySearch = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPage_DetailDic = new System.Windows.Forms.TabPage();
+            this.btn_LoadDetail = new System.Windows.Forms.Button();
             this.treeView_DetailDic = new System.Windows.Forms.TreeView();
             this.tabPage_Mask = new System.Windows.Forms.TabPage();
             this.flwLayout_MaskWord = new System.Windows.Forms.FlowLayoutPanel();
@@ -77,7 +78,6 @@ namespace Dictionary.Forms.Search
             this.btn_ResotreSetting = new System.Windows.Forms.Button();
             this.timerCheckClickSearch = new System.Windows.Forms.Timer(this.components);
             this.timerCheckHistory = new System.Windows.Forms.Timer(this.components);
-            this.timerCheckDetailDic = new System.Windows.Forms.Timer(this.components);
             this.timerCheckMaskWord = new System.Windows.Forms.Timer(this.components);
             this.timer_CheckSave = new System.Windows.Forms.Timer(this.components);
             this.panel_Main.SuspendLayout();
@@ -420,6 +420,7 @@ namespace Dictionary.Forms.Search
             // tabPage_DetailDic
             // 
             this.tabPage_DetailDic.BackColor = System.Drawing.Color.White;
+            this.tabPage_DetailDic.Controls.Add(this.btn_LoadDetail);
             this.tabPage_DetailDic.Controls.Add(this.treeView_DetailDic);
             this.tabPage_DetailDic.ForeColor = System.Drawing.Color.White;
             this.tabPage_DetailDic.Location = new System.Drawing.Point(4, 22);
@@ -429,12 +430,27 @@ namespace Dictionary.Forms.Search
             this.tabPage_DetailDic.TabIndex = 2;
             this.tabPage_DetailDic.Text = "Chi tiết TĐ";
             // 
+            // btn_LoadDetail
+            // 
+            this.btn_LoadDetail.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_LoadDetail.FlatAppearance.BorderSize = 0;
+            this.btn_LoadDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_LoadDetail.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_LoadDetail.ForeColor = System.Drawing.Color.White;
+            this.btn_LoadDetail.Location = new System.Drawing.Point(6, 330);
+            this.btn_LoadDetail.Name = "btn_LoadDetail";
+            this.btn_LoadDetail.Size = new System.Drawing.Size(218, 23);
+            this.btn_LoadDetail.TabIndex = 12;
+            this.btn_LoadDetail.Text = "Tải chi tiết TĐ";
+            this.btn_LoadDetail.UseVisualStyleBackColor = false;
+            this.btn_LoadDetail.Click += new System.EventHandler(this.btn_LoadDetail_Click);
+            // 
             // treeView_DetailDic
             // 
-            this.treeView_DetailDic.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView_DetailDic.Dock = System.Windows.Forms.DockStyle.Top;
             this.treeView_DetailDic.Location = new System.Drawing.Point(3, 3);
             this.treeView_DetailDic.Name = "treeView_DetailDic";
-            this.treeView_DetailDic.Size = new System.Drawing.Size(224, 351);
+            this.treeView_DetailDic.Size = new System.Drawing.Size(224, 322);
             this.treeView_DetailDic.TabIndex = 4;
             this.treeView_DetailDic.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_DetailDic_AfterSelect);
             // 
@@ -688,11 +704,6 @@ namespace Dictionary.Forms.Search
             this.timerCheckHistory.Enabled = true;
             this.timerCheckHistory.Tick += new System.EventHandler(this.timerCheckHistory_Tick);
             // 
-            // timerCheckDetailDic
-            // 
-            this.timerCheckDetailDic.Enabled = true;
-            this.timerCheckDetailDic.Tick += new System.EventHandler(this.timerCheckDetailDic_Tick);
-            // 
             // timerCheckMaskWord
             // 
             this.timerCheckMaskWord.Enabled = true;
@@ -783,11 +794,11 @@ namespace Dictionary.Forms.Search
         private System.Windows.Forms.Timer timerCheckClickSearch;
         private UserControls.s_RichTextBoxOnlyView rTBox_Word;
         private System.Windows.Forms.Timer timerCheckHistory;
-        private System.Windows.Forms.Timer timerCheckDetailDic;
         private System.Windows.Forms.Timer timerCheckMaskWord;
         private System.Windows.Forms.FlowLayoutPanel flwLayout_MaskWord;
         private System.Windows.Forms.ComboBox cbox_SizeSearch;
         private System.Windows.Forms.Button btn_DelAllHistory;
         private System.Windows.Forms.Timer timer_CheckSave;
+        private System.Windows.Forms.Button btn_LoadDetail;
     }
 }
