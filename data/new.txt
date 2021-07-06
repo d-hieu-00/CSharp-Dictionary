@@ -1,0 +1,10 @@
+@Vocabulary /Pronouce/
+*Type
+-Mean
++SubMean
+=Example+Mean example
+!Another Vocabulary
+*Type
+-Mean
++SubMean
+=Example+Mean exanple
