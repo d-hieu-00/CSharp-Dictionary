@@ -13,16 +13,16 @@ namespace Dictionary.Resources
     class MainRes
     {
         public PracticeForm practiceForm;
-        public Search searchForm;
         public Games gamesForm;
+        public Search searchForm;
         public MainForm mainForm;
         public bool loadDone = false;
 
         public MainRes()
         {
             practiceForm = new PracticeForm();
-            searchForm = new Search();
             gamesForm = new Games();
+            searchForm = new Search();
             mainForm = new MainForm();
             loadDone = true;
         }

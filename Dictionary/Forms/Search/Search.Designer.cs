@@ -74,6 +74,7 @@ namespace Dictionary.Forms.Search
             this.btn_Game = new System.Windows.Forms.Button();
             this.btn_Practice = new System.Windows.Forms.Button();
             this.grBox_Settings = new System.Windows.Forms.GroupBox();
+            this.btn_Trans = new System.Windows.Forms.Button();
             this.btn_ExportDic = new System.Windows.Forms.Button();
             this.btn_ResotreSetting = new System.Windows.Forms.Button();
             this.timerCheckClickSearch = new System.Windows.Forms.Timer(this.components);
@@ -654,6 +655,7 @@ namespace Dictionary.Forms.Search
             // 
             // grBox_Settings
             // 
+            this.grBox_Settings.Controls.Add(this.btn_Trans);
             this.grBox_Settings.Controls.Add(this.btn_ExportDic);
             this.grBox_Settings.Controls.Add(this.btn_ResotreSetting);
             this.grBox_Settings.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -664,6 +666,21 @@ namespace Dictionary.Forms.Search
             this.grBox_Settings.TabStop = false;
             this.grBox_Settings.Text = "Cài đặt";
             // 
+            // btn_Trans
+            // 
+            this.btn_Trans.BackColor = System.Drawing.Color.SeaGreen;
+            this.btn_Trans.FlatAppearance.BorderSize = 0;
+            this.btn_Trans.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Trans.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Trans.ForeColor = System.Drawing.Color.White;
+            this.btn_Trans.Location = new System.Drawing.Point(255, 23);
+            this.btn_Trans.Name = "btn_Trans";
+            this.btn_Trans.Size = new System.Drawing.Size(88, 28);
+            this.btn_Trans.TabIndex = 17;
+            this.btn_Trans.Text = "Dịch";
+            this.btn_Trans.UseVisualStyleBackColor = false;
+            this.btn_Trans.Click += new System.EventHandler(this.btn_Trans_Click);
+            // 
             // btn_ExportDic
             // 
             this.btn_ExportDic.BackColor = System.Drawing.Color.SeaGreen;
@@ -673,7 +690,7 @@ namespace Dictionary.Forms.Search
             this.btn_ExportDic.ForeColor = System.Drawing.Color.White;
             this.btn_ExportDic.Location = new System.Drawing.Point(142, 23);
             this.btn_ExportDic.Name = "btn_ExportDic";
-            this.btn_ExportDic.Size = new System.Drawing.Size(113, 28);
+            this.btn_ExportDic.Size = new System.Drawing.Size(107, 28);
             this.btn_ExportDic.TabIndex = 16;
             this.btn_ExportDic.Text = "Xuất từ điển";
             this.btn_ExportDic.UseVisualStyleBackColor = false;
@@ -800,5 +817,6 @@ namespace Dictionary.Forms.Search
         private System.Windows.Forms.Button btn_DelAllHistory;
         private System.Windows.Forms.Timer timer_CheckSave;
         private System.Windows.Forms.Button btn_LoadDetail;
+        private System.Windows.Forms.Button btn_Trans;
     }
 }
