@@ -165,8 +165,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\MyRes\MainRes.cs" />
+    <Compile Include="Resources\Model\DataPractice.cs" />
+    <Compile Include="Resources\MainRes.cs" />
+
     <Compile Include="Resources\Model\Mean.cs" />
+    <Compile Include="Resources\Model\Topic.cs" />
     <Compile Include="Resources\Model\User.cs" />
     <Compile Include="Resources\Model\Word.cs" />
     <Compile Include="Resources\MyRes\MsgGames.cs" />
