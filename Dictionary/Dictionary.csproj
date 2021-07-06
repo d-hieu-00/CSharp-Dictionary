@@ -70,8 +70,38 @@
     <Compile Include="Forms\Practice\PracticeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Practice\PracticeForm.Designer.cs">
+    <Compile Include="Forms\Practice\PracticeForm.designer.cs">
       <DependentUpon>PracticeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Practice\UserControls\p_FindMeans.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Practice\UserControls\p_FindMeans.Designer.cs">
+      <DependentUpon>p_FindMeans.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Practice\UserControls\p_FindWords.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Practice\UserControls\p_FindWords.designer.cs">
+      <DependentUpon>p_FindWords.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Practice\UserControls\p_Play.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Practice\UserControls\p_Play.designer.cs">
+      <DependentUpon>p_Play.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Practice\UserControls\p_RowLession.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Practice\UserControls\p_RowLession.Designer.cs">
+      <DependentUpon>p_RowLession.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Practice\UserControls\p_RowWord.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Practice\UserControls\p_RowWord.Designer.cs">
+      <DependentUpon>p_RowWord.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Search\DicForm.cs">
       <SubType>Form</SubType>
@@ -135,6 +165,18 @@
     <EmbeddedResource Include="Forms\Practice\PracticeForm.resx">
       <DependentUpon>PracticeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Practice\UserControls\p_FindMeans.resx">
+      <DependentUpon>p_FindMeans.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Practice\UserControls\p_Play.resx">
+      <DependentUpon>p_Play.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Practice\UserControls\p_RowLession.resx">
+      <DependentUpon>p_RowLession.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Practice\UserControls\p_RowWord.resx">
+      <DependentUpon>p_RowWord.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Search\DicForm.resx">
       <DependentUpon>DicForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -179,7 +221,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Forms\Game\UserControls\" />
-    <Folder Include="Forms\Practice\UserControl\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
