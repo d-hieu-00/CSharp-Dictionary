@@ -17,6 +17,9 @@ namespace Dictionary.Forms.Search
 {
     public partial class Search : Form
     {
+        private WordForm wForm;
+        private DicForm dicForm;
+        private TranslateForm transForm;
         public Search()
         {
             InitializeComponent();
@@ -157,11 +160,13 @@ namespace Dictionary.Forms.Search
         private void btn_Practice_Click(object sender, EventArgs e)
         {
             Resources.Resources.main.practiceForm.Show();
+            Resources.Resources.main.practiceForm.Activate();
         }
 
         private void btn_Game_Click(object sender, EventArgs e)
         {
             Resources.Resources.main.gamesForm.Show();
+            Resources.Resources.main.gamesForm.Activate();
         }
 
         private void btn_Minimize_Click(object sender, EventArgs e)
@@ -391,16 +396,15 @@ namespace Dictionary.Forms.Search
                 return;
             }
             Word w = rTBox_Word.Tag as Word;
-            /*Task.Run(() =>
-            {*/
             Cursor = Cursors.WaitCursor;
-            if (w.Audio == null)
+            /*if (w.Audio == null)
                 w.Audio = Utility.GetAudioByWord(w.Vocabulary);
-            //MessageBox.Show(w.Audio);
+
             if (w.Audio != "" && w.Audio != null)
                 Utility.PlayMp3FromUrl(w.Audio);
             else
-                MessageBox.Show("Không có dữ liệu", "Lỗi nghe từ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Không có dữ liệu", "Lỗi nghe từ", MessageBoxButtons.OK, MessageBoxIcon.Error);*/
+            Classes.Utility.SpeechString(w.Vocabulary);
             Cursor = Cursors.Default;
         }
 
@@ -409,6 +413,11 @@ namespace Dictionary.Forms.Search
         #region button, cbox change
         private void btn_ReloadDics_Click(object sender, EventArgs e)
         {
+            if (Resources.Resources.dics.Count == 0)
+            {
+                MessageBox.Show("Chưa có từ điển !!", "Lỗi tải lại từ điển", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             Cursor = Cursors.WaitCursor;
             for (int i = 0; i < Resources.Resources.dics.Count; i++)
                 Resources.Resources.dics[i].Reload();
@@ -443,8 +452,15 @@ namespace Dictionary.Forms.Search
         }
         private void btn_AddWord_Click(object sender, EventArgs e)
         {
-            var wForm = new WordForm(cBox_Dics.SelectedIndex);
+            if (Resources.Resources.dics.Count == 0)
+            {
+                MessageBox.Show("Chưa có từ điển !!", "Lỗi thêm từ mới", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (wForm == null || wForm.IsDisposed)
+                wForm = new WordForm(cBox_Dics.SelectedIndex);
             wForm.Show();
+            wForm.Activate();
         }
         private void btn_ModifyWord_Click(object sender, EventArgs e)
         {
@@ -533,6 +549,11 @@ namespace Dictionary.Forms.Search
 
         private void btn_ExportDic_Click(object sender, EventArgs e)
         {
+            if (Resources.Resources.dics.Count == 0)
+            {
+                MessageBox.Show("Chưa có từ điển !!", "Lỗi xuất từ điển", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             var indDic = cBox_Dics.SelectedIndex;
             Utility.ExportFileDic(indDic);
         }
@@ -570,8 +591,16 @@ namespace Dictionary.Forms.Search
 
         private void btn_EditDics_Click(object sender, EventArgs e)
         {
+            if (Resources.Resources.dics.Count == 0)
+            {
+                MessageBox.Show("Chưa có từ điển !!", "Lỗi sửa từ điển", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             var indDic = cBox_Dics.SelectedIndex;
-            (new DicForm(indDic)).Show();
+            if (dicForm == null || dicForm.IsDisposed)
+                dicForm = new DicForm(indDic);
+            dicForm.Show();
+            dicForm.Activate();
         }
 
         private void btn_SaveDics_Click(object sender, EventArgs e)
@@ -583,5 +612,13 @@ namespace Dictionary.Forms.Search
         }
 
         #endregion
+
+        private void btn_Trans_Click(object sender, EventArgs e)
+        {
+            if (transForm == null || transForm.IsDisposed)
+                transForm = new TranslateForm();
+            transForm.Show();
+            transForm.Activate();
+        }
     }
 }

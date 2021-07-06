@@ -11,6 +11,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Speech.Synthesis;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace Dictionary.Classes
 {
@@ -109,7 +112,7 @@ namespace Dictionary.Classes
             string jsonString;
             try
             {
-                jsonString = new WebClient().DownloadString("https://api.dictionaryapi.dev/api/v2/entries/en_US/" + w.Trim());
+                jsonString = new WebClient().DownloadString(Config.ApiAudio + w.Trim());
             } catch (Exception)
             {
                 return null;
@@ -130,6 +133,15 @@ namespace Dictionary.Classes
             }
 
             return audio;
+        }
+        public static void SpeechString(string q)
+        {
+            SpeechSynthesizer ss = new SpeechSynthesizer();
+            
+/*            var l = ss.GetInstalledVoices();
+            ss.SelectVoice(l[1].VoiceInfo.Name);*/
+
+            ss.SpeakAsync(q);
         }
         public static void PlayMp3FromUrl(string url)
         {
@@ -162,6 +174,26 @@ namespace Dictionary.Classes
                     Thread.Sleep(1000);
                 }
             }
+        }
+        public static Thread PlayMp3GameFromUrlBackground(string url)
+        {
+            if (!Config.PlaySoundGame)
+                return null;
+            var _t = new Thread(() =>
+            {
+                using (var mf = new MediaFoundationReader(url))
+                using (var wo = new WaveOutEvent())
+                {
+                    wo.Init(mf);
+                    wo.Play();
+                    while (wo.PlaybackState == PlaybackState.Playing)
+                    {
+                        Thread.Sleep(1000);
+                    }
+                }
+            });
+            _t.Start();
+            return _t;
         }
         #endregion
         #region richTexBox, Word, Dictionary
@@ -724,6 +756,43 @@ namespace Dictionary.Classes
                     }));
                 else
                     MessageBox.Show("Lỗi đường dẫn", "Xuất từ điển", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public class Translation
+        {
+            public string translatedText { get; set; }
+        }
+
+        public class Data
+        {
+            public List<Translation> translations { get; set; }
+        }
+
+        public class RootTrans
+        {
+            public Data data { get; set; }
+        }
+        public static string TranslateString(string ori)
+        {
+            var client = new WebClient();
+            var key = Config.KeyApiTrans;
+            if (Resources.Resources.user.KeyApiTrans != null && Resources.Resources.user.KeyApiTrans != "")
+                key = Resources.Resources.user.KeyApiTrans;
+            client.Headers.Add("x-rapidapi-key", key);
+            client.Headers.Add("x-rapidapi-host", "google-translate1.p.rapidapi.com");
+            client.QueryString.Add("q", ori);
+            client.QueryString.Add("target", "vi");
+            client.QueryString.Add("source", "en");
+
+            try
+            {
+                byte[] responsebytes = client.UploadValues(@Config.ApiTrans, "POST", client.QueryString);
+                var jsonString = Encoding.UTF8.GetString(responsebytes);
+                var obj = JsonConvert.DeserializeObject<RootTrans>(jsonString);
+                return obj.data.translations[0].translatedText;
+            } catch
+            {
+                return null;
             }
         }
         #endregion

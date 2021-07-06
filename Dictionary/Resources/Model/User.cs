@@ -14,7 +14,7 @@ namespace Dictionary.Resources.Model
         public Dictionary<string, int> Settings { get; set; }
         // key: name, value: path
         public Dictionary<string, string> PathDics { get; set; }
-
+        public string KeyApiTrans = "";
         #region init
         public User()
         {
@@ -60,106 +60,107 @@ namespace Dictionary.Resources.Model
                 var v = PathDics[k];
                 tmp.Add('-' + k + '\t' + @v);
             }
+            tmp.Add("@KeyApiTrans");
+            tmp.Add(KeyApiTrans);
             return tmp.ToArray();
         }
         public bool LoadUser()
         {
-            /*try
-            {*/
-                if (!File.Exists(Classes.Config.DirConfig + Classes.Config.NameFileConfig))
-                {
-                    Save();
-                    return true;
-                }
-                string[] dataLines = File.ReadAllLines(Classes.Config.DirConfig + Classes.Config.NameFileConfig);
-                for (var i=0; i<dataLines.Length; i++)
-                {
-                    if (dataLines[i] == "@History")
-                    {
-                        for (var j=i+1; j<dataLines.Length; j++)
-                        {
-                            if (dataLines[j][0] == '@')
-                            {
-                                i = j - 1;
-                                break;
-                            }
-                            if (dataLines[j][0] == '*')
-                            {
-                                var k = dataLines[j].TrimStart('*');
-                                Dictionary<string, int> _t = new Dictionary<string, int>();
-                                for (var _j=j+1; _j<dataLines.Length; _j++)
-                                {
-                                    if (dataLines[_j][0] == '*' || dataLines[_j][0] == '@')
-                                    {
-                                        j = _j - 1;
-                                        break;
-                                    }
-                                    var d = dataLines[_j].Split('\t');
-                                    _t.Add(d[0].TrimStart('-'), Convert.ToInt32(d[1]));
-                                }
-                                History.Add(Convert.ToInt32(k), _t);
-                            }
-                        }
-                    } 
-                    else if (dataLines[i] == "@Favorite")
-                    {
-                        for (var j = i + 1; j < dataLines.Length; j++)
-                        {
-                            if (dataLines[j][0] == '@')
-                            {
-                                i = j - 1;
-                                break;
-                            }
-                            if (dataLines[j][0] == '*')
-                            {
-                                var k = dataLines[j].TrimStart('*');
-                                Dictionary<string, int> _t = new Dictionary<string, int>();
-                                for (var _j = j + 1; _j < dataLines.Length; _j++)
-                                {
-                                    if (dataLines[_j][0] == '*' || dataLines[_j][0] == '@')
-                                    {
-                                        j = _j - 1;
-                                        break;
-                                    }
-                                    var d = dataLines[_j].Split('\t');
-                                    _t.Add(d[0].TrimStart('-'), Convert.ToInt32(d[1]));
-                                }
-                                Favorite.Add(Convert.ToInt32(k), _t);
-                            }
-                        }
-                    }
-                    else if (dataLines[i] == "@Settings")
-                    {
-                        for (var j = i + 1; j < dataLines.Length; j++)
-                        {
-                            if (dataLines[j][0] == '@')
-                            {
-                                i = j - 1;
-                                break;
-                            }
-                            var d = dataLines[j].Split('\t');
-                            Settings.Add(d[0].TrimStart('-'), Convert.ToInt32(d[1]));
-                        }
-                    }
-                    else if (dataLines[i] == "@PathDics")
-                    {
-                        for (var j = i + 1; j < dataLines.Length; j++)
-                        {
-                            if (dataLines[j][0] == '@')
-                            {
-                                i = j - 1;
-                                break;
-                            }
-                            var d = dataLines[j].Split('\t');
-                            PathDics.Add(d[0].TrimStart('-'), @d[1]);
-                        }
-                    }
-                }
-                return true;
-            /*} catch (Exception)
+            if (!File.Exists(Classes.Config.DirConfig + Classes.Config.NameFileConfig))
             {
-                return false;
-            }*/
+                Save();
+                return true;
+            }
+            string[] dataLines = File.ReadAllLines(Classes.Config.DirConfig + Classes.Config.NameFileConfig);
+            for (var i=0; i<dataLines.Length; i++)
+            {
+                if (dataLines[i] == "@History")
+                {
+                    for (var j=i+1; j<dataLines.Length; j++)
+                    {
+                        if (dataLines[j][0] == '@')
+                        {
+                            i = j - 1;
+                            break;
+                        }
+                        if (dataLines[j][0] == '*')
+                        {
+                            var k = dataLines[j].TrimStart('*');
+                            Dictionary<string, int> _t = new Dictionary<string, int>();
+                            for (var _j=j+1; _j<dataLines.Length; _j++)
+                            {
+                                if (dataLines[_j][0] == '*' || dataLines[_j][0] == '@')
+                                {
+                                    j = _j - 1;
+                                    break;
+                                }
+                                var d = dataLines[_j].Split('\t');
+                                _t.Add(d[0].TrimStart('-'), Convert.ToInt32(d[1]));
+                            }
+                            History.Add(Convert.ToInt32(k), _t);
+                        }
+                    }
+                } 
+                else if (dataLines[i] == "@Favorite")
+                {
+                    for (var j = i + 1; j < dataLines.Length; j++)
+                    {
+                        if (dataLines[j][0] == '@')
+                        {
+                            i = j - 1;
+                            break;
+                        }
+                        if (dataLines[j][0] == '*')
+                        {
+                            var k = dataLines[j].TrimStart('*');
+                            Dictionary<string, int> _t = new Dictionary<string, int>();
+                            for (var _j = j + 1; _j < dataLines.Length; _j++)
+                            {
+                                if (dataLines[_j][0] == '*' || dataLines[_j][0] == '@')
+                                {
+                                    j = _j - 1;
+                                    break;
+                                }
+                                var d = dataLines[_j].Split('\t');
+                                _t.Add(d[0].TrimStart('-'), Convert.ToInt32(d[1]));
+                            }
+                            Favorite.Add(Convert.ToInt32(k), _t);
+                        }
+                    }
+                }
+                else if (dataLines[i] == "@Settings")
+                {
+                    for (var j = i + 1; j < dataLines.Length; j++)
+                    {
+                        if (dataLines[j][0] == '@')
+                        {
+                            i = j - 1;
+                            break;
+                        }
+                        var d = dataLines[j].Split('\t');
+                        Settings.Add(d[0].TrimStart('-'), Convert.ToInt32(d[1]));
+                    }
+                }
+                else if (dataLines[i] == "@PathDics")
+                {
+                    for (var j = i + 1; j < dataLines.Length; j++)
+                    {
+                        if (dataLines[j][0] == '@')
+                        {
+                            i = j - 1;
+                            break;
+                        }
+                        var d = dataLines[j].Split('\t');
+                        PathDics.Add(d[0].TrimStart('-'), @d[1]);
+                    }
+                }
+                else if (dataLines[i] == "@KeyApiTrans")
+                {
+                    KeyApiTrans = dataLines[i + 1];
+                    i++;
+                }
+            }
+            return true;
         }
         public bool Save()
         {
