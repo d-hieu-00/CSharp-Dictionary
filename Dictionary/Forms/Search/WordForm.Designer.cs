@@ -113,9 +113,9 @@ namespace Dictionary.Forms.Search
             this.lb_View.BackColor = System.Drawing.Color.DarkCyan;
             this.lb_View.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_View.ForeColor = System.Drawing.Color.Transparent;
-            this.lb_View.Location = new System.Drawing.Point(516, 33);
+            this.lb_View.Location = new System.Drawing.Point(519, 33);
             this.lb_View.Name = "lb_View";
-            this.lb_View.Size = new System.Drawing.Size(266, 32);
+            this.lb_View.Size = new System.Drawing.Size(263, 32);
             this.lb_View.TabIndex = 10;
             this.lb_View.Text = "Hiện thị";
             this.lb_View.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -125,7 +125,7 @@ namespace Dictionary.Forms.Search
             this.lb_Write.BackColor = System.Drawing.Color.DarkCyan;
             this.lb_Write.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_Write.ForeColor = System.Drawing.Color.Transparent;
-            this.lb_Write.Location = new System.Drawing.Point(237, 33);
+            this.lb_Write.Location = new System.Drawing.Point(240, 33);
             this.lb_Write.Name = "lb_Write";
             this.lb_Write.Size = new System.Drawing.Size(263, 32);
             this.lb_Write.TabIndex = 9;

@@ -9,9 +9,17 @@ namespace Dictionary.Classes
 {
     class Config
     {
+        // ready only
+        public static readonly string ApiAudio = "https://api.dictionaryapi.dev/api/v2/entries/en_US/";
+        public static readonly string ApiTrans = "https://google-translate1.p.rapidapi.com/language/translate/v2";
+        public static readonly string LinkGetKeyApiTrans = "https://rapidapi.com/googlecloud/api/google-translate1/";
+        public static readonly string KeyApiTrans = "f97eb4090emsha33d76a8f7380dap14accfjsn0c443d295fc7";
+
+        // can edit by settings
         public static int DefaultRounded = 4;
         public static int DefaultShowSearch = 25;
         public static bool PlaySoundGame = true;
+        public static bool PlaySoundGameBackground = true;
         public static string DirConfig = "./Config/";
         public static string NameFileConfig = "config.con";
         public static string NameApp = "Nhóm 17";
