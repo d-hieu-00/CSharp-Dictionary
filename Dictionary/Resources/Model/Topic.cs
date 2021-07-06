@@ -16,11 +16,29 @@ namespace Dictionary.Resources.Model
         
         public Topic()
         {
-
+            Pics = new List<string>();
+            Words = new List<Word>();
+            Path = "";
+            Name = "";
+            Count = 0;
         }
-        public void loadData()
+        public Topic(Topic topic)
+        {
+            Pics = (List<string>)Classes.Utility.CloneList(topic.Pics);
+            Words = new List<Word>();
+            foreach (var i in topic.Words)
+                Words.Add(i.Clone());
+            Path = topic.Path;
+            Name = topic.Name;
+            Count = topic.Count;
+        }
+        public void LoadData()
         {
 
+        }
+        public Topic Clone()
+        {
+            return new Topic(this);
         }
     }
 }

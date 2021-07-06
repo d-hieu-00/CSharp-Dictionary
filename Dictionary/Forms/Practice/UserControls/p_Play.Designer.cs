@@ -41,6 +41,7 @@ namespace Dictionary.Forms.Practice.UserControls
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,9 +66,9 @@ namespace Dictionary.Forms.Practice.UserControls
             this.s_ButtonRound1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.s_ButtonRound1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.s_ButtonRound1.ForeColor = System.Drawing.Color.White;
-            this.s_ButtonRound1.Location = new System.Drawing.Point(493, 338);
+            this.s_ButtonRound1.Location = new System.Drawing.Point(542, 312);
             this.s_ButtonRound1.Name = "s_ButtonRound1";
-            this.s_ButtonRound1.Size = new System.Drawing.Size(204, 73);
+            this.s_ButtonRound1.Size = new System.Drawing.Size(158, 62);
             this.s_ButtonRound1.TabIndex = 24;
             this.s_ButtonRound1.Text = "Chơi";
             this.s_ButtonRound1.UseVisualStyleBackColor = false;
@@ -77,9 +78,9 @@ namespace Dictionary.Forms.Practice.UserControls
             this.lb_DetailResult.BackColor = System.Drawing.Color.DarkGray;
             this.lb_DetailResult.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_DetailResult.ForeColor = System.Drawing.Color.White;
-            this.lb_DetailResult.Location = new System.Drawing.Point(226, 7);
+            this.lb_DetailResult.Location = new System.Drawing.Point(219, 7);
             this.lb_DetailResult.Name = "lb_DetailResult";
-            this.lb_DetailResult.Size = new System.Drawing.Size(187, 32);
+            this.lb_DetailResult.Size = new System.Drawing.Size(268, 32);
             this.lb_DetailResult.TabIndex = 23;
             this.lb_DetailResult.Text = "Kết quả chi tiết";
             this.lb_DetailResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -88,7 +89,7 @@ namespace Dictionary.Forms.Practice.UserControls
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(490, 290);
+            this.label1.Location = new System.Drawing.Point(523, 248);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 17);
             this.label1.TabIndex = 22;
@@ -98,7 +99,7 @@ namespace Dictionary.Forms.Practice.UserControls
             // 
             this.comboBox3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(589, 285);
+            this.comboBox3.Location = new System.Drawing.Point(612, 243);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(121, 28);
             this.comboBox3.TabIndex = 21;
@@ -107,7 +108,7 @@ namespace Dictionary.Forms.Practice.UserControls
             // 
             this.comboBox2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(589, 242);
+            this.comboBox2.Location = new System.Drawing.Point(612, 200);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 28);
             this.comboBox2.TabIndex = 20;
@@ -118,14 +119,14 @@ namespace Dictionary.Forms.Practice.UserControls
             this.flowLayoutPanel2.Location = new System.Drawing.Point(219, 45);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Padding = new System.Windows.Forms.Padding(3);
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(204, 368);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(268, 368);
             this.flowLayoutPanel2.TabIndex = 19;
             // 
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(462, 245);
+            this.radioButton2.Location = new System.Drawing.Point(493, 203);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(105, 21);
             this.radioButton2.TabIndex = 18;
@@ -137,7 +138,7 @@ namespace Dictionary.Forms.Practice.UserControls
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
             this.radioButton1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(462, 198);
+            this.radioButton1.Location = new System.Drawing.Point(493, 156);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(103, 21);
             this.radioButton1.TabIndex = 17;
@@ -149,7 +150,7 @@ namespace Dictionary.Forms.Practice.UserControls
             // 
             this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(589, 198);
+            this.comboBox1.Location = new System.Drawing.Point(612, 156);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 28);
             this.comboBox1.TabIndex = 16;
@@ -166,18 +167,33 @@ namespace Dictionary.Forms.Practice.UserControls
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Dictionary.Properties.Resources.Cat_roll;
-            this.pictureBox1.Location = new System.Drawing.Point(504, 30);
+            this.pictureBox1.Location = new System.Drawing.Point(542, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(170, 142);
+            this.pictureBox1.Size = new System.Drawing.Size(158, 131);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 25;
             this.pictureBox1.TabStop = false;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.LinkColor = System.Drawing.Color.DarkCyan;
+            this.linkLabel1.Location = new System.Drawing.Point(637, 396);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(93, 15);
+            this.linkLabel1.TabIndex = 27;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Hướng dẫn chơi";
+            this.linkLabel1.VisitedLinkColor = System.Drawing.Color.DarkMagenta;
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // p_Play
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.s_ButtonRound2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.s_ButtonRound1);
@@ -212,5 +228,6 @@ namespace Dictionary.Forms.Practice.UserControls
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

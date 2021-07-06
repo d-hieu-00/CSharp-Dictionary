@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using System.Speech.Synthesis;
 using System.Net.Http;
 using Newtonsoft.Json;
+using System.Reflection;
 
 namespace Dictionary.Classes
 {
@@ -83,6 +84,16 @@ namespace Dictionary.Classes
             }
             return ret;
         }
+        public static Dictionary<Word, Word> CloneDictionaryCloningValues
+           (Dictionary<Word, Word> original)
+        {
+            Dictionary<Word, Word> ret = new Dictionary<Word, Word>(original.Count, original.Comparer);
+            foreach (KeyValuePair<Word, Word> entry in original)
+            {
+                ret.Add(entry.Key.Clone(), entry.Value.Clone());
+            }
+            return ret;
+        }
         public static Dictionary<int, List<string>> CloneDictionaryCloningValues
             (Dictionary<int, List<string>> original)
         {
@@ -142,6 +153,30 @@ namespace Dictionary.Classes
             ss.SelectVoice(l[1].VoiceInfo.Name);*/
 
             ss.SpeakAsync(q);
+        }
+        public static Thread PlayMp3BackgroundFromResource()
+        {
+            var _t = new Thread(() =>
+            {
+                MemoryStream mp3file = new MemoryStream(Properties.Resources.background);
+                var i = new AudioFileReader(@"D:\doc\_TL\NamIII\KyII\Ngon-ngu-C# CS511.L21\DoAn\New folder\background.mp3");
+                i.Volume = 0.1F;
+                using (var mf = new Mp3FileReader(mp3file))
+                using (var wo = new WaveOutEvent())
+                {
+                    wo.Init(i);
+                    wo.Play();
+
+                    while (wo.PlaybackState == PlaybackState.Playing)
+                    {
+                        if (Config.PlaySoundGameBackground && wo.PlaybackState != PlaybackState.Playing)
+                            Thread.Sleep(1000);
+                        Thread.Sleep(100);
+                    }
+                }
+            });
+            _t.Start();
+            return _t;
         }
         public static void PlayMp3FromUrl(string url)
         {
@@ -344,7 +379,7 @@ namespace Dictionary.Classes
             for (int i=0; i<word.Means.Count; i++)
             {
                 if (word.Means[i].TypeWord != null && word.Means[i].TypeWord != "")
-                    w.Add("*" + word.Means[i].TypeWord);
+                    w.Add(" *" + word.Means[i].TypeWord);
                 var means = word.Means[i].Meanings;
                 for (var _i=0; _i<means.Count; _i++)
                 {
@@ -795,6 +830,15 @@ namespace Dictionary.Classes
                 return null;
             }
         }
+        #endregion
+        #region resource
+        public static Stream GetResourceStream(string filename)
+        {
+            Assembly asm = Assembly.GetExecutingAssembly();
+            string resname = asm.GetName().Name + "." + filename;
+            return asm.GetManifestResourceStream(resname);
+        }
+
         #endregion
     }
 }

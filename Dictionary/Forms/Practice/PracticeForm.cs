@@ -15,10 +15,16 @@ namespace Dictionary.Forms.Practice
         public PracticeForm()
         {
             InitializeComponent();
+
         }
         private void PracticeForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Resources.Resources.main.practiceForm = new PracticeForm();
+        }
+
+        private void btn_Close_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
