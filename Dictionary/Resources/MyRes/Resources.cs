@@ -14,13 +14,17 @@ namespace Dictionary.Resources
         public static MainRes main;
         public static User user;
         public static List<MsgWord> dics;
+        public static DataPractice dataPractice;
         static public bool InitRes()
         {
             user = new User();
             if (!user.LoadUser())
                 return false;
-            main = new MainRes();
+            dataPractice = new DataPractice();
+            if (!dataPractice.LoadData())
+                return false;
             dics = new List<MsgWord>();
+            main = new MainRes();
             return true;
         }
         static public bool LoadDics()

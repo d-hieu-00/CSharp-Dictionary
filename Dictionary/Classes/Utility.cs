@@ -116,6 +116,83 @@ namespace Dictionary.Classes
         }
         #endregion
         #region Audio
+        public class LoopStream : WaveStream
+        {
+            WaveStream sourceStream;
+
+            /// <summary>
+            /// Creates a new Loop stream
+            /// </summary>
+            /// <param name="sourceStream">The stream to read from. Note: the Read method of this stream should return 0 when it reaches the end
+            /// or else we will not loop to the start again.</param>
+            public LoopStream(WaveStream sourceStream)
+            {
+                this.sourceStream = sourceStream;
+                this.EnableLooping = true;
+            }
+
+            /// <summary>
+            /// Use this to turn looping on or off
+            /// </summary>
+            public bool EnableLooping { get; set; }
+
+            /// <summary>
+            /// Return source stream's wave format
+            /// </summary>
+            public override WaveFormat WaveFormat
+            {
+                get { return sourceStream.WaveFormat; }
+            }
+
+            /// <summary>
+            /// LoopStream simply returns
+            /// </summary>
+            public override long Length
+            {
+                get { return sourceStream.Length; }
+            }
+
+            /// <summary>
+            /// LoopStream simply passes on positioning to source stream
+            /// </summary>
+            public override long Position
+            {
+                get { return sourceStream.Position; }
+                set { sourceStream.Position = value; }
+            }
+
+            public override int Read(byte[] buffer, int offset, int count)
+            {
+                int totalBytesRead = 0;
+
+                while (totalBytesRead < count)
+                {
+                    int bytesRead = sourceStream.Read(buffer, offset + totalBytesRead, count - totalBytesRead);
+                    if (bytesRead == 0)
+                    {
+                        if (sourceStream.Position == 0 || !EnableLooping)
+                        {
+                            // something wrong with the source stream
+                            break;
+                        }
+                        // loop
+                        sourceStream.Position = 0;
+                    }
+                    totalBytesRead += bytesRead;
+                }
+                return totalBytesRead;
+            }
+        }
+        public static void Mute()
+        {
+            var wo = new WaveOutEvent();
+            wo.Volume = 0.0F;
+        }
+        public static void UnMute()
+        {
+            var wo = new WaveOutEvent();
+            wo.Volume = 1.0F;
+        }
         public static string GetAudioByWord(string w)
         {
             string audio = null; 
@@ -154,23 +231,21 @@ namespace Dictionary.Classes
 
             ss.SpeakAsync(q);
         }
-        public static Thread PlayMp3BackgroundFromResource()
+        public static Thread PlayMp3BackgroundFromUrl(string url)
         {
             var _t = new Thread(() =>
             {
-                MemoryStream mp3file = new MemoryStream(Properties.Resources.background);
-                var i = new AudioFileReader(@"D:\doc\_TL\NamIII\KyII\Ngon-ngu-C# CS511.L21\DoAn\New folder\background.mp3");
-                i.Volume = 0.1F;
-                using (var mf = new Mp3FileReader(mp3file))
+
+                AudioFileReader reader = new AudioFileReader(@url);
+                reader.Volume = 0.2F;
+                LoopStream loop = new LoopStream(reader);
                 using (var wo = new WaveOutEvent())
                 {
-                    wo.Init(i);
+                    wo.Init(loop);
                     wo.Play();
 
-                    while (wo.PlaybackState == PlaybackState.Playing)
+                    while (true)
                     {
-                        if (Config.PlaySoundGameBackground && wo.PlaybackState != PlaybackState.Playing)
-                            Thread.Sleep(1000);
                         Thread.Sleep(100);
                     }
                 }
@@ -581,6 +656,168 @@ namespace Dictionary.Classes
         public static void LoadWordForView(RichTextBox rTBox_Word, string word)
         {
             Word w = ReadWord(new List<string>(word.Split('\n')));
+            rTBox_Word.Invoke(new MethodInvoker(delegate ()
+            {
+                rTBox_Word.SuspendLayout();
+                rTBox_Word.Text = "";
+                rTBox_Word.Tag = w;
+
+                // vocabulary and pronouce
+                RtboxAppendText(rTBox_Word, w.Vocabulary,
+                    Config.colorVoc,
+                    new Font("Segoe UI", 11F, FontStyle.Bold));
+                if (w.Pronounce != null && w.Pronounce != "")
+                    RtboxAppendText(rTBox_Word, '\n' + w.Pronounce,
+                        Config.colorPro,
+                        new Font("Segoe UI", 10F, FontStyle.Regular));
+                // means
+                for (var i = 0; i < w.Means.Count; i++)
+                {
+                    if (w.Means[i].TypeWord != null)
+                    {
+                        RtboxAppendText(rTBox_Word, "\n* " + w.Means[i].TypeWord,
+                            Config.colorTyp,
+                            new Font("Segoe UI", 9F, FontStyle.Bold));
+                    }
+
+                    for (var _i = 0; _i < w.Means[i].Meanings.Count; _i++)
+                    {
+                        RtboxAppendText(rTBox_Word, "\n   - " + w.Means[i].Meanings[_i],
+                            Config.colorMea,
+                            new Font("Segoe UI", 9F, FontStyle.Regular));
+                        // sub mean, exam
+                        var subMean = w.Means[i].SubMeans[_i];
+                        var exam = w.Means[i].Examples[_i];
+                        for (var j = 0; j < subMean.Count; j++)
+                        {
+                            RtboxAppendText(rTBox_Word, "\n     " + subMean[j],
+                                Config.colorSub,
+                                new Font("Segoe UI", 8F, FontStyle.Italic));
+                        }
+                        for (var j = 0; j < exam.Count; j++)
+                        {
+                            string[] e;
+                            if (!exam[j].Contains('+'))
+                                e = (exam[j] + '+').Split('+');
+                            e = exam[j].Split('+');
+                            RtboxAppendText(rTBox_Word, "\n     + \"" + e[0] + '\"',
+                                Config.colorExm,
+                                new Font("Segoe UI", 8F, FontStyle.Regular));
+                            RtboxAppendText(rTBox_Word, " - " + e[1],
+                                Config.colorExm,
+                                new Font("Segoe UI", 8F, FontStyle.Italic));
+                        }
+                    }
+                    if (w.Means[i].SubMeans.ContainsKey(-1))
+                    {
+                        var subMean = w.Means[i].SubMeans[-1];
+                        for (var j = 0; j < subMean.Count; j++)
+                        {
+                            RtboxAppendText(rTBox_Word, "\n     " + subMean[j],
+                                Config.colorSub,
+                                new Font("Segoe UI", 8F, FontStyle.Italic));
+                        }
+                    }
+                    if (w.Means[i].Examples.ContainsKey(-1))
+                    {
+                        var exam = w.Means[i].Examples[-1];
+                        for (var j = 0; j < exam.Count; j++)
+                        {
+                            string[] e;
+                            if (!exam[j].Contains('+'))
+                                e = (exam[j] + '+').Split('+');
+                            e = exam[j].Split('+');
+                            RtboxAppendText(rTBox_Word, "\n     + \"" + e[0] + '\"',
+                                Config.colorExm,
+                                new Font("Segoe UI", 8F, FontStyle.Regular));
+                            RtboxAppendText(rTBox_Word, " - " + e[1],
+                                Config.colorExm,
+                                new Font("Segoe UI", 8F, FontStyle.Italic));
+                        }
+                    }
+                }
+                // sub word
+                for (var __i = 0; __i < w.SubWords.Count; __i++)
+                {
+                    var _w = w.SubWords[__i];
+
+                    // vocabulary
+                    RtboxAppendText(rTBox_Word, "\n# " + _w.Vocabulary,
+                        Config.colorSub,
+                        new Font("Segoe UI", 9F, FontStyle.Bold));
+                    // means
+                    for (var i = 0; i < _w.Means.Count; i++)
+                    {
+                        if (_w.Means[i].TypeWord != null)
+                        {
+                            RtboxAppendText(rTBox_Word, "\n   * " + _w.Means[i].TypeWord,
+                                Config.colorTyp,
+                                new Font("Segoe UI", 9F, FontStyle.Bold));
+                        }
+
+                        for (var _i = 0; _i < _w.Means[i].Meanings.Count; _i++)
+                        {
+                            RtboxAppendText(rTBox_Word, "\n       - " + _w.Means[i].Meanings[_i],
+                                Config.colorMea,
+                                new Font("Segoe UI", 9F, FontStyle.Regular));
+                            // sub mean, exam
+                            var subMean = _w.Means[i].SubMeans[_i];
+                            var exam = _w.Means[i].Examples[_i];
+                            for (var j = 0; j < subMean.Count; j++)
+                            {
+                                RtboxAppendText(rTBox_Word, "\n        " + subMean[j],
+                                    Config.colorSub,
+                                    new Font("Segoe UI", 8F, FontStyle.Italic));
+                            }
+                            for (var j = 0; j < exam.Count; j++)
+                            {
+                                string[] e;
+                                if (!exam[j].Contains('+'))
+                                    e = (exam[j] + '+').Split('+');
+                                e = exam[j].Split('+');
+                                RtboxAppendText(rTBox_Word, "\n          + \"" + e[0] + '\"',
+                                    Config.colorExm,
+                                    new Font("Segoe UI", 8F, FontStyle.Regular));
+                                RtboxAppendText(rTBox_Word, " - " + e[1],
+                                    Config.colorExm,
+                                    new Font("Segoe UI", 8F, FontStyle.Italic));
+                            }
+                        }
+                        if (_w.Means[i].SubMeans.ContainsKey(-1))
+                        {
+                            var subMean = _w.Means[i].SubMeans[-1];
+                            for (var j = 0; j < subMean.Count; j++)
+                            {
+                                RtboxAppendText(rTBox_Word, "\n        " + subMean[j],
+                                    Config.colorSub,
+                                    new Font("Segoe UI", 8F, FontStyle.Italic));
+                            }
+                        }
+                        if (_w.Means[i].Examples.ContainsKey(-1))
+                        {
+                            var exam = _w.Means[i].Examples[-1];
+                            for (var j = 0; j < exam.Count; j++)
+                            {
+                                string[] e;
+                                if (!exam[j].Contains('+'))
+                                    e = (exam[j] + '+').Split('+');
+                                e = exam[j].Split('+');
+                                RtboxAppendText(rTBox_Word, "\n          + \"" + e[0] + '\"',
+                                    Config.colorExm,
+                                    new Font("Segoe UI", 8F, FontStyle.Regular));
+                                RtboxAppendText(rTBox_Word, " - " + e[1],
+                                    Config.colorExm,
+                                    new Font("Segoe UI", 8F, FontStyle.Italic));
+                            }
+                        }
+                    }
+                }
+                rTBox_Word.ResumeLayout();
+            }));
+        }
+        public static void LoadWordForView(RichTextBox rTBox_Word, Word w)
+        {
+            //Word w = ReadWord(new List<string>(word.Split('\n')));
             rTBox_Word.Invoke(new MethodInvoker(delegate ()
             {
                 rTBox_Word.SuspendLayout();

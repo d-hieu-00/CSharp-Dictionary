@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dictionary.Resources.Model
 {
-    class Word
+    public class Word
     {
         public string Vocabulary { get; set; }
         public string Pronounce { get; set; }

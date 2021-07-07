@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
@@ -11,7 +12,6 @@ namespace Dictionary
 {
     static class Program
     {
-        public static Thread _t;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -21,8 +21,6 @@ namespace Dictionary
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.ApplicationExit += OnApplicationExit;
-            //Console.WriteLine(System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));
-            _t = Classes.Utility.PlayMp3BackgroundFromResource();
             if (Resources.Resources.InitRes())
             {
                 Application.Run(Resources.Resources.main.mainForm);
@@ -35,7 +33,7 @@ namespace Dictionary
         }
         private static void OnApplicationExit(object sender, EventArgs e)
         {
-            _t.Abort();
+
         }
     }
 }

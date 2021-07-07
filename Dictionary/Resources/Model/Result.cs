@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace Dictionary.Resources.Model
 {
-    class Result
+    public class Result
     {
         public List<string> Results { get; set; }
-        public List<Dictionary<Word, Word>> DetailResult { get; set; }
+        public List<List<string>> DetailResult { get; set; }
         public Result()
         {
             Results = new List<string>();
-            DetailResult = new List<Dictionary<Word, Word>>();
+            DetailResult = new List<List<string>>();
         }
         public Result(Result result)
         {
             Results = (List<string>)Classes.Utility.CloneList(result.Results);
-            DetailResult = new List<Dictionary<Word, Word>>();
+            DetailResult = new List<List<string>>();
             foreach (var i in result.DetailResult)
-                DetailResult.Add(Classes.Utility.CloneDictionaryCloningValues(i));
+                DetailResult.Add((List<string>)Classes.Utility.CloneList(i));
         }
         public Result Clone()
         {
