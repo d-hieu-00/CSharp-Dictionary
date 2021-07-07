@@ -46,4 +46,6 @@
 *  danh từ
 - quan toà, thẩm phán
 
-
+@teacher /'ti:tʃə/
+*  danh từ
+- giáo viên, cán bộ giảng dạy
