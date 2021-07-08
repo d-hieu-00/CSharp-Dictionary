@@ -259,6 +259,9 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\word.jpg" />
+    <None Include="Resources\pronouce.jpg" />
+    <None Include="Resources\mean.png" />
     <None Include="Resources\complete.mp3" />
     <None Include="Resources\incorrect.mp3" />
     <None Include="Resources\correct.mp3" />

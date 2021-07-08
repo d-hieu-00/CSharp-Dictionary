@@ -175,35 +175,57 @@ namespace Dictionary.Forms.Practice.UserControls
                     randomNumbers[1] = new Random().Next(0, _t.Count);
                 }
             }
+            var _i = 0;
             switch (_ind)
             {
-                case 1:
-                    var _i = 0;
-                    for (var i=1; i<5; i++)
+            case 1:
+                for (var i=1; i<5; i++)
+                {
+                    if (i == _indRight)
                     {
-                        if (i == _indRight)
-                        {
-                            if (w.Means.Count > 0 && w.Means[0].Meanings.Count > 0)
-                                l.Add(w.Means[0].Meanings[0]);
-                            else
-                                l.Add("Lỗi từ không có nghĩa !! kiểm tra lại: " + _t.Name);
-                        }
+                        if (w.Means.Count > 0 && w.Means[0].Meanings.Count > 0)
+                            l.Add(w.Means[0].Meanings[0]);
                         else
-                        {
-                            var _w = _t.Words[randomNumbers[_i++]];
-                            if (_w.Means.Count > 0 && _w.Means[0].Meanings.Count > 0)
-                                l.Add(_w.Means[0].Meanings[0]);
-                            else
-                                l.Add("Lỗi từ không có nghĩa !! kiểm tra lại: " + _t.Name);
-                        }
+                            l.Add("Lỗi từ không có nghĩa !! kiểm tra lại: " + _t.Name);
                     }
-                    break;
-                case 2:
-                    //BackColor = Color.Gold;
-                    break;
-                case 3:
-                    //BackColor = Color.Blue;
-                    break;
+                    else
+                    {
+                        var _w = _t.Words[randomNumbers[_i++]];
+                        if (_w.Means.Count > 0 && _w.Means[0].Meanings.Count > 0)
+                            l.Add(_w.Means[0].Meanings[0]);
+                        else
+                            l.Add("Lỗi từ không có nghĩa !! kiểm tra lại: " + _t.Name);
+                    }
+                }
+                break;
+            case 2:
+                for (var i = 1; i < 5; i++)
+                {
+                    if (i == _indRight)
+                    {
+                        l.Add(w.Vocabulary);
+                    }
+                    else
+                    {
+                        var _w = _t.Words[randomNumbers[_i++]];
+                        l.Add(_w.Vocabulary);
+                    }
+                }
+                break;
+            case 3:
+                for (var i = 1; i < 5; i++)
+                {
+                    if (i == _indRight)
+                    {
+                        l.Add(w.Pronounce);
+                    }
+                    else
+                    {
+                        var _w = _t.Words[randomNumbers[_i++]];
+                        l.Add(_w.Pronounce);
+                    }
+                }
+                break;
             }
             return l;
         }
@@ -215,6 +237,17 @@ namespace Dictionary.Forms.Practice.UserControls
             rdbtn_option_2.Text = l[1];
             rdbtn_option_3.Text = l[2];
             rdbtn_option_4.Text = l[3];
+        }
+        public string GetLetter(string s)
+        {
+            var _ls = new List<string>();
+            foreach (var i in s)
+                _ls.Add(i.ToString());
+            _ls.Sort();
+            var _s = "";
+            foreach (var i in _ls)
+                _s += " " + i.ToString().ToUpper();
+            return _s;
         }
         public void LoadWord()
         {
@@ -234,13 +267,19 @@ namespace Dictionary.Forms.Practice.UserControls
                     lb_recommend_2.Text = "";
                     break;
                 case 2:
-                    lb_require.Text = "Tìm nghĩa đúng của từ: " + w.Vocabulary;
+                    lb_require.Text = "Tìm từ đúng ";
                     lb_recommend_1.Text = "Phát âm: " + w.Pronounce;
-                    lb_recommend_2.Text = "";
+                    if (w.Means.Count > 0 && w.Means[0].Meanings.Count > 0)
+                        lb_recommend_2.Text = "Nghĩa: " + w.Means[0].Meanings[0];
+                    else
+                        lb_recommend_2.Text = "Lỗi từ không có nghĩa !! kiểm tra lại: " + _t.Name;
                     break;
                 case 3:
-                    lb_require.Text = "Tìm nghĩa đúng của từ: " + w.Vocabulary;
-                    lb_recommend_1.Text = "Phát âm: " + w.Pronounce;
+                    lb_require.Text = "Tìm phát âm đúng của từ: " + w.Vocabulary;
+                    if (w.Means.Count > 0 && w.Means[0].Meanings.Count > 0)
+                        lb_recommend_1.Text = "Nghĩa: " + w.Means[0].Meanings[0];
+                    else
+                        lb_recommend_1.Text = "Lỗi từ không có nghĩa !! kiểm tra lại: " + _t.Name;
                     lb_recommend_2.Text = "";
                     break;
             }

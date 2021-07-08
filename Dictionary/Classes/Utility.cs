@@ -531,6 +531,7 @@ namespace Dictionary.Classes
         {
             rTBox_Word.Invoke(new MethodInvoker(delegate ()
             {
+                rTBox_Word.Cursor = Cursors.Default;
                 Word w = Resources.Resources.dics[indDic].GetWord(val, indVal);
                 rTBox_Word.SuspendLayout();
                 rTBox_Word.Text = "";
@@ -695,6 +696,7 @@ namespace Dictionary.Classes
             Word w = ReadWord(new List<string>(word.Split('\n')));
             rTBox_Word.Invoke(new MethodInvoker(delegate ()
             {
+                rTBox_Word.Cursor = Cursors.Default;
                 rTBox_Word.SuspendLayout();
                 rTBox_Word.Text = "";
                 rTBox_Word.Tag = w;
@@ -857,6 +859,7 @@ namespace Dictionary.Classes
             //Word w = ReadWord(new List<string>(word.Split('\n')));
             rTBox_Word.Invoke(new MethodInvoker(delegate ()
             {
+                rTBox_Word.Cursor = Cursors.Default;
                 rTBox_Word.SuspendLayout();
                 rTBox_Word.Text = "";
                 rTBox_Word.Tag = w;
@@ -1018,6 +1021,7 @@ namespace Dictionary.Classes
         {
             rTBox_Word.Invoke(new MethodInvoker(delegate ()
             {
+                rTBox_Word.Cursor = Cursors.Default;
                 float fSize = 10F;
                 Font f = new Font("Segoe UI", fSize, FontStyle.Regular);
                 Font f_bold = new Font("Segoe UI", fSize, FontStyle.Bold);
@@ -1045,6 +1049,46 @@ namespace Dictionary.Classes
                 RtboxAppendText(rTBox_Word, "\nMàu đỏ: không thể thiếu", Color.Black, new Font("Segoe UI", 9F, FontStyle.Italic));
                 RtboxAppendText(rTBox_Word, "\nKý tự đầu dòng {@,*,+,-,=}", Color.Black, new Font("Segoe UI", 9F, FontStyle.Italic));
                 RtboxAppendText(rTBox_Word, "\nLưu ý ký tự đầu đúng thứ tự", Color.Black, new Font("Segoe UI", 9F, FontStyle.Italic));
+                rTBox_Word.ResumeLayout();
+            }));
+        }
+        public static void LoadGuildPractice(RichTextBox rTBox_Word)
+        {
+            rTBox_Word.Invoke(new MethodInvoker(delegate ()
+            {
+                rTBox_Word.Cursor = Cursors.Default;
+                float fSize = 10F;
+                Font f = new Font("Segoe UI", fSize, FontStyle.Regular);
+                Font f_bold = new Font("Segoe UI", fSize, FontStyle.Bold);
+                Font f_italic = new Font("Segoe UI", fSize, FontStyle.Italic);
+                Font f_under = new Font("Segoe UI", fSize, FontStyle.Underline);
+                rTBox_Word.SuspendLayout();
+                rTBox_Word.Text = "";
+
+                RtboxAppendText(rTBox_Word, "Thêm chủ đề", Color.Red, f_bold);
+                RtboxAppendText(rTBox_Word, "\n  1. Tạo thư mục với tên thực là tên chủ đề vd: 'Animal'", Color.Teal, f);
+                RtboxAppendText(rTBox_Word, "'Animal'", Color.Teal, f_bold);
+                RtboxAppendText(rTBox_Word, "\n  2. Dùng tính năng xuất từ điển để lưu từ với tên tệp 'Words.txt' và lưu trong thư mục chủ đề", Color.Teal, f);
+                RtboxAppendText(rTBox_Word, "'Words.txt'", Color.Teal, f_bold);
+                RtboxAppendText(rTBox_Word, " và lưu trong thư mục chủ đề", Color.Teal, f);
+                RtboxAppendText(rTBox_Word, "\n  3. Tạo thư mục ", Color.Teal, f);
+                RtboxAppendText(rTBox_Word, "'Pics'", Color.Teal, f_bold);
+                RtboxAppendText(rTBox_Word, " lưu hình dạng ", Color.Teal, f);
+                RtboxAppendText(rTBox_Word, "'*.jpg'", Color.Teal, f_bold);
+                RtboxAppendText(rTBox_Word, " có tên hình trùng với tên từ vựng và viết thường", Color.Teal, f);
+                RtboxAppendText(rTBox_Word, " 'fox.jpg'", Color.Teal, f_bold);
+                RtboxAppendText(rTBox_Word, "\n  4. Thêm thư mục vừa tạo vào: ", Color.Teal, f);
+                RtboxAppendText(rTBox_Word, Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\Data", Color.Teal, f_bold);
+
+                RtboxAppendText(rTBox_Word, "\n\nVí dụ .../Topics /Animal/", Color.SeaGreen, f_bold);
+                RtboxAppendText(rTBox_Word, "\n                         + Words.txt", Color.SeaGreen, f_bold);
+                RtboxAppendText(rTBox_Word, "\n                         + Pics/", Color.SeaGreen, f_bold);
+                RtboxAppendText(rTBox_Word, "\n                                 + fox.jpg", Color.SeaGreen, f_bold);
+
+                RtboxAppendText(rTBox_Word, "\nThay nhạc nền", Color.Red, f_bold);
+                RtboxAppendText(rTBox_Word, "\n  Đổi tệp 'background.mp3' bằng tệp nhạc trùng tên khác", Color.Teal, f_bold);
+                RtboxAppendText(rTBox_Word, "\n  Đường dẫn: ", Color.Teal, f);
+                RtboxAppendText(rTBox_Word, Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\Data", Color.Teal, f_bold);
                 rTBox_Word.ResumeLayout();
             }));
         }

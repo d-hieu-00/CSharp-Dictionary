@@ -24,7 +24,7 @@ namespace Dictionary.Forms.Practice
         public PracticeForm()
         {
             InitializeComponent();
-            LoadTopic();
+            LoadTopic();   
         }
         public void LoadTopic()
         {
@@ -118,6 +118,7 @@ namespace Dictionary.Forms.Practice
             if (_t != null && _t.IsAlive)
                 _t.Abort();
             Classes.Utility.UnMute();
+            Classes.Config.AllVolume = 1.0F;
         }
         private void LoadBackground()
         {
@@ -267,6 +268,7 @@ namespace Dictionary.Forms.Practice
                 p_Playing.PerformQuiteClick();
                 return;
             }
+            Classes.Utility.LoadGuildPractice(rTbox_Guild);
             tabControl_Main.SelectedIndex = 4;
             trackBar_Volume.Value = (int)(Classes.Config.AllVolume * 100);
             trackBar_VolumeBackground.Value = (int)(Classes.Config.BackgroundVolume * 100);

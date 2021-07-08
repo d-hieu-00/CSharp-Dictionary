@@ -31,11 +31,11 @@ namespace Dictionary.Forms.Practice
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InfoWord));
             this.panel_View = new System.Windows.Forms.Panel();
+            this.rTbox_View = new Dictionary.Forms.Search.UserControls.s_RichTextBoxOnlyView();
             this.panel_Main = new System.Windows.Forms.Panel();
-            this.lb_Title = new System.Windows.Forms.Label();
             this.panel_Top = new System.Windows.Forms.Panel();
             this.btn_Close = new Dictionary.Forms.Search.UserControls.s_ButtonRound();
-            this.rTbox_View = new Dictionary.Forms.Search.UserControls.s_RichTextBoxOnlyView();
+            this.lb_Title = new System.Windows.Forms.Label();
             this.panel_View.SuspendLayout();
             this.panel_Main.SuspendLayout();
             this.panel_Top.SuspendLayout();
@@ -51,8 +51,20 @@ namespace Dictionary.Forms.Practice
             this.panel_View.Size = new System.Drawing.Size(389, 293);
             this.panel_View.TabIndex = 7;
             // 
+            // rTbox_View
+            // 
+            this.rTbox_View.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rTbox_View.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rTbox_View.Location = new System.Drawing.Point(4, 4);
+            this.rTbox_View.Name = "rTbox_View";
+            this.rTbox_View.Size = new System.Drawing.Size(379, 283);
+            this.rTbox_View.TabIndex = 0;
+            this.rTbox_View.Text = "@Vocabulary /Pronouce/\n*Type\n-Mean\n+SubMean\n=Example+Mean example\n!Another Vocabu" +
+    "lary \n*Type\n-Mean\n+SubMean\n=Example+Mean exanple\n";
+            // 
             // panel_Main
             // 
+            this.panel_Main.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_Main.Controls.Add(this.panel_Top);
             this.panel_Main.Controls.Add(this.panel_View);
             this.panel_Main.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -60,16 +72,6 @@ namespace Dictionary.Forms.Practice
             this.panel_Main.Name = "panel_Main";
             this.panel_Main.Size = new System.Drawing.Size(400, 334);
             this.panel_Main.TabIndex = 8;
-            // 
-            // lb_Title
-            // 
-            this.lb_Title.AutoSize = true;
-            this.lb_Title.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Title.Location = new System.Drawing.Point(3, 7);
-            this.lb_Title.Name = "lb_Title";
-            this.lb_Title.Size = new System.Drawing.Size(58, 15);
-            this.lb_Title.TabIndex = 3;
-            this.lb_Title.Text = "Chi tiết từ";
             // 
             // panel_Top
             // 
@@ -79,7 +81,7 @@ namespace Dictionary.Forms.Practice
             this.panel_Top.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_Top.Location = new System.Drawing.Point(0, 0);
             this.panel_Top.Name = "panel_Top";
-            this.panel_Top.Size = new System.Drawing.Size(400, 29);
+            this.panel_Top.Size = new System.Drawing.Size(398, 29);
             this.panel_Top.TabIndex = 12;
             this.panel_Top.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
             this.panel_Top.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
@@ -93,7 +95,7 @@ namespace Dictionary.Forms.Practice
             this.btn_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Close.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Close.ForeColor = System.Drawing.Color.Transparent;
-            this.btn_Close.Location = new System.Drawing.Point(366, 3);
+            this.btn_Close.Location = new System.Drawing.Point(364, 3);
             this.btn_Close.Name = "btn_Close";
             this.btn_Close.Size = new System.Drawing.Size(29, 23);
             this.btn_Close.TabIndex = 2;
@@ -101,16 +103,15 @@ namespace Dictionary.Forms.Practice
             this.btn_Close.UseVisualStyleBackColor = false;
             this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
             // 
-            // rTbox_View
+            // lb_Title
             // 
-            this.rTbox_View.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rTbox_View.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rTbox_View.Location = new System.Drawing.Point(4, 4);
-            this.rTbox_View.Name = "rTbox_View";
-            this.rTbox_View.Size = new System.Drawing.Size(379, 283);
-            this.rTbox_View.TabIndex = 0;
-            this.rTbox_View.Text = "@Vocabulary /Pronouce/\n*Type\n-Mean\n+SubMean\n=Example+Mean example\n!Another Vocabu" +
-    "lary \n*Type\n-Mean\n+SubMean\n=Example+Mean exanple\n";
+            this.lb_Title.AutoSize = true;
+            this.lb_Title.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_Title.Location = new System.Drawing.Point(3, 7);
+            this.lb_Title.Name = "lb_Title";
+            this.lb_Title.Size = new System.Drawing.Size(58, 15);
+            this.lb_Title.TabIndex = 3;
+            this.lb_Title.Text = "Chi tiết từ";
             // 
             // InfoWord
             // 

@@ -20,6 +20,8 @@ namespace Dictionary.Resources
         }
         public bool LoadData()
         {
+            if (!Directory.Exists(Classes.Config.DirDataTopic))
+                Directory.CreateDirectory(Classes.Config.DirDataTopic);
             var dir = Directory.GetDirectories(Classes.Config.DirDataTopic);
             foreach (var i in dir)
             {

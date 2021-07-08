@@ -28,9 +28,9 @@ namespace Dictionary.Forms.Practice.UserControls
             lb_No.Text = ind.ToString();
             lb_Result.Text = rs;
             lb_asw.Text = asw;
-            if (rs == "correct")
+            if (asw == "correct")
                 lb_asw.ForeColor = Color.MediumSeaGreen;
-            else if (rs == "incorrect")
+            else if (asw == "incorrect")
                 lb_asw.ForeColor = Color.Firebrick;
             else
                 lb_asw.ForeColor = Color.Gainsboro;

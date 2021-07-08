@@ -137,13 +137,13 @@ namespace Dictionary.Forms.Practice.UserControls
             switch (i_form)
             {
                 case 1:
-                    
+                    pic_Icon.Image = Properties.Resources.mean;
                     break;
                 case 2:
-                    //word form
+                    pic_Icon.Image = Properties.Resources.word;
                     break;
                 case 3:
-                    //pronounce
+                    pic_Icon.Image = Properties.Resources.pronouce;
                     break;
             }
         }
