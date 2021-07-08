@@ -31,7 +31,7 @@ namespace Dictionary.Forms.Practice.UserControls
         {
             this.lb_No = new System.Windows.Forms.Label();
             this.lb_Result = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lb_asw = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lb_No
@@ -56,16 +56,17 @@ namespace Dictionary.Forms.Practice.UserControls
             this.lb_Result.Text = "hello";
             this.lb_Result.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label3
+            // lb_asw
             // 
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(146, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 23);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "xin chào";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lb_asw.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lb_asw.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_asw.ForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.lb_asw.Location = new System.Drawing.Point(146, 0);
+            this.lb_asw.Name = "lb_asw";
+            this.lb_asw.Size = new System.Drawing.Size(100, 23);
+            this.lb_asw.TabIndex = 2;
+            this.lb_asw.Text = "xin chào";
+            this.lb_asw.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // p_t_RowDetailResult
             // 
@@ -73,7 +74,7 @@ namespace Dictionary.Forms.Practice.UserControls
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lb_asw);
             this.Controls.Add(this.lb_Result);
             this.Controls.Add(this.lb_No);
             this.Name = "p_t_RowDetailResult";
@@ -86,6 +87,6 @@ namespace Dictionary.Forms.Practice.UserControls
 
         private System.Windows.Forms.Label lb_No;
         private System.Windows.Forms.Label lb_Result;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lb_asw;
     }
 }

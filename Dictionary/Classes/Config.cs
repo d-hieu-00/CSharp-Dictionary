@@ -23,8 +23,9 @@ namespace Dictionary.Classes
         // can edit by settings
         public static int DefaultRounded = 4;
         public static int DefaultShowSearch = 25;
-        public static bool PlaySoundGame = true;
-        public static bool PlaySoundGameBackground = true;
+        public static bool GameSound = true;
+        public static float BackgroundVolume = 0.2F;
+        public static float AllVolume = 1F;
         public static string NameApp = "Nhóm 17";
         public static string Loading = "Đang tải dữ liệu";
         public static Font defFont = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);

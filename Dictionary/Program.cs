@@ -21,6 +21,7 @@ namespace Dictionary
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.ApplicationExit += OnApplicationExit;
+
             if (Resources.Resources.InitRes())
             {
                 Application.Run(Resources.Resources.main.mainForm);

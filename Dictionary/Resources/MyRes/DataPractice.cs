@@ -57,7 +57,7 @@ namespace Dictionary.Resources
                                 var l = new List<string>();
                                 for (var _j = j + 1; _j < dataLines.Length; _j++)
                                 {
-                                    if (dataLines[j][0] == '+')
+                                    if (dataLines[_j][0] == '+')
                                         l.Add(dataLines[_j].Remove(0, 1));
                                     else
                                     {

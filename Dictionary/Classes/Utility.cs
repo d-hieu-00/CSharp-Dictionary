@@ -225,33 +225,11 @@ namespace Dictionary.Classes
         public static void SpeechString(string q)
         {
             SpeechSynthesizer ss = new SpeechSynthesizer();
-            
-/*            var l = ss.GetInstalledVoices();
+
+            /*var l = ss.GetInstalledVoices();
             ss.SelectVoice(l[1].VoiceInfo.Name);*/
-
+            ss.Volume = (int) Config.AllVolume*100;
             ss.SpeakAsync(q);
-        }
-        public static Thread PlayMp3BackgroundFromUrl(string url)
-        {
-            var _t = new Thread(() =>
-            {
-
-                AudioFileReader reader = new AudioFileReader(@url);
-                reader.Volume = 0.2F;
-                LoopStream loop = new LoopStream(reader);
-                using (var wo = new WaveOutEvent())
-                {
-                    wo.Init(loop);
-                    wo.Play();
-
-                    while (true)
-                    {
-                        Thread.Sleep(100);
-                    }
-                }
-            });
-            _t.Start();
-            return _t;
         }
         public static void PlayMp3FromUrl(string url)
         {
@@ -260,6 +238,7 @@ namespace Dictionary.Classes
             {
                 wo.Init(mf);
                 wo.Play();
+                wo.Volume = Config.AllVolume;
                 Resources.Resources.main.searchForm.Invoke(new MethodInvoker(delegate ()
                 {
                     Resources.Resources.main.searchForm.Cursor = Cursors.Default;
@@ -267,38 +246,96 @@ namespace Dictionary.Classes
                 while (wo.PlaybackState == PlaybackState.Playing)
                 {
                     Thread.Sleep(100);
+                    wo.Volume = Config.AllVolume;
                 }
             }
         }
-        public static void PlayMp3GameFromUrl(string url)
+        public static Thread PlayMp3BackgroundFromUrl(string url)
         {
-            if (!Config.PlaySoundGame)
-                return;
-            using (var mf = new MediaFoundationReader(url))
-            using (var wo = new WaveOutEvent())
+            var _t = new Thread(() =>
             {
-                wo.Init(mf);
-                wo.Play();
-                while (wo.PlaybackState == PlaybackState.Playing)
+                AudioFileReader reader = new AudioFileReader(@url);
+                reader.Volume = 0.2F;
+                LoopStream loop = new LoopStream(reader);
+                using (var wo = new WaveOutEvent())
                 {
-                    Thread.Sleep(1000);
+                    wo.Init(loop);
+                    wo.Play();
+                    wo.Volume = Config.AllVolume;
+                    while (true)
+                    {
+                        reader.Volume = Config.BackgroundVolume;
+                        wo.Volume = Config.AllVolume;
+                        Thread.Sleep(100);
+                    }
                 }
-            }
+            });
+            _t.Start();
+            return _t;
         }
-        public static Thread PlayMp3GameFromUrlBackground(string url)
+        public static Thread PlayMp3Correct()
         {
-            if (!Config.PlaySoundGame)
+            if (!Config.GameSound)
                 return null;
             var _t = new Thread(() =>
             {
-                using (var mf = new MediaFoundationReader(url))
+                MemoryStream mp3file = new MemoryStream(Properties.Resources.correct);
+                using (var mf = new WaveFileReader(mp3file))
                 using (var wo = new WaveOutEvent())
                 {
                     wo.Init(mf);
                     wo.Play();
+                    wo.Volume = Config.AllVolume;
                     while (wo.PlaybackState == PlaybackState.Playing)
                     {
                         Thread.Sleep(1000);
+                        wo.Volume = Config.AllVolume;
+                    }
+                }
+            });
+            _t.Start();
+            return _t;
+        }
+        public static Thread PlayMp3InCorrect()
+        {
+            if (!Config.GameSound)
+                return null;
+            var _t = new Thread(() =>
+            {
+                MemoryStream mp3file = new MemoryStream(Properties.Resources.incorrect);
+                using (var mf = new Mp3FileReader(mp3file))
+                using (var wo = new WaveOutEvent())
+                {
+                    wo.Init(mf);
+                    wo.Play();
+                    wo.Volume = Config.AllVolume;
+                    while (wo.PlaybackState == PlaybackState.Playing)
+                    {
+                        Thread.Sleep(1000);
+                        wo.Volume = Config.AllVolume;
+                    }
+                }
+            });
+            _t.Start();
+            return _t;
+        }
+        public static Thread PlayMp3Complete()
+        {
+            if (!Config.GameSound)
+                return null;
+            var _t = new Thread(() =>
+            {
+                MemoryStream mp3file = new MemoryStream(Properties.Resources.complete);
+                using (var mf = new Mp3FileReader(mp3file))
+                using (var wo = new WaveOutEvent())
+                {
+                    wo.Init(mf);
+                    wo.Play();
+                    wo.Volume = Config.AllVolume;
+                    while (wo.PlaybackState == PlaybackState.Playing)
+                    {
+                        Thread.Sleep(1000);
+                        wo.Volume = Config.AllVolume;
                     }
                 }
             });
@@ -1034,12 +1071,10 @@ namespace Dictionary.Classes
         {
             public string translatedText { get; set; }
         }
-
         public class Data
         {
             public List<Translation> translations { get; set; }
         }
-
         public class RootTrans
         {
             public Data data { get; set; }

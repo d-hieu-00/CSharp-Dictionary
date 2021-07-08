@@ -163,11 +163,11 @@ namespace Dictionary.Forms.Search
             Resources.Resources.main.practiceForm.Activate();
         }
 
-        private void btn_Game_Click(object sender, EventArgs e)
+        /*private void btn_Game_Click(object sender, EventArgs e)
         {
             Resources.Resources.main.gamesForm.Show();
             Resources.Resources.main.gamesForm.Activate();
-        }
+        }*/
 
         private void btn_Minimize_Click(object sender, EventArgs e)
         {

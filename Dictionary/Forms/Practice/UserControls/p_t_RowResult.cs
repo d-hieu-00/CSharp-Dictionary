@@ -13,10 +13,13 @@ namespace Dictionary.Forms.Practice.UserControls
     public partial class p_t_RowResult : UserControl
     {
         public int ind;
+        public bool haveClick = false;
         public p_t_RowResult(int _ind, string _rs)
         {
             InitializeComponent();
             ind = _ind;
+            Tag = 0;
+            LoadData(_rs);
         }
         public void LoadData(string _rs)
         {
@@ -27,6 +30,12 @@ namespace Dictionary.Forms.Practice.UserControls
 
             if (s[1].Split('/')[0] == s[1].Split('/')[1])
                 lb_Result.ForeColor = Color.MediumSeaGreen;
+        }
+
+        private void lb_No_Click(object sender, EventArgs e)
+        {
+            haveClick = true;
+            Tag = 1;
         }
     }
 }

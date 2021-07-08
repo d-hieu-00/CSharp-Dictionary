@@ -29,6 +29,7 @@ namespace Dictionary.Forms.Practice.UserControls
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btn_DelAllHistory = new Dictionary.Forms.Search.UserControls.s_ButtonRound();
             this.btn_Play = new Dictionary.Forms.Search.UserControls.s_ButtonRound();
             this.lb_DetailResult = new System.Windows.Forms.Label();
@@ -42,6 +43,7 @@ namespace Dictionary.Forms.Practice.UserControls
             this.flw_Result = new System.Windows.Forms.FlowLayoutPanel();
             this.pic_Icon = new System.Windows.Forms.PictureBox();
             this.llb_Guild = new System.Windows.Forms.LinkLabel();
+            this.timer_ResultClick = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pic_Icon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,6 +74,7 @@ namespace Dictionary.Forms.Practice.UserControls
             this.btn_Play.TabIndex = 24;
             this.btn_Play.Text = "Chơi";
             this.btn_Play.UseVisualStyleBackColor = false;
+            this.btn_Play.Click += new System.EventHandler(this.btn_Play_Click);
             // 
             // lb_DetailResult
             // 
@@ -195,6 +198,11 @@ namespace Dictionary.Forms.Practice.UserControls
             this.llb_Guild.VisitedLinkColor = System.Drawing.Color.DarkMagenta;
             this.llb_Guild.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llb_Guild_LinkClicked);
             // 
+            // timer_ResultClick
+            // 
+            this.timer_ResultClick.Enabled = true;
+            this.timer_ResultClick.Tick += new System.EventHandler(this.timer_ResultClick_Tick);
+            // 
             // p_Play
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -236,5 +244,6 @@ namespace Dictionary.Forms.Practice.UserControls
         private System.Windows.Forms.ComboBox cBox_Topic;
         private System.Windows.Forms.FlowLayoutPanel flw_Result;
         private System.Windows.Forms.LinkLabel llb_Guild;
+        private System.Windows.Forms.Timer timer_ResultClick;
     }
 }

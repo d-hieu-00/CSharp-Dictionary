@@ -71,7 +71,6 @@ namespace Dictionary.Forms.Search
             this.btn_AddDics = new System.Windows.Forms.Button();
             this.tabPage_Help = new System.Windows.Forms.TabPage();
             this.grBox_Extentions = new System.Windows.Forms.GroupBox();
-            this.btn_Game = new System.Windows.Forms.Button();
             this.btn_Practice = new System.Windows.Forms.Button();
             this.grBox_Settings = new System.Windows.Forms.GroupBox();
             this.btn_Trans = new System.Windows.Forms.Button();
@@ -613,30 +612,14 @@ namespace Dictionary.Forms.Search
             // 
             // grBox_Extentions
             // 
-            this.grBox_Extentions.Controls.Add(this.btn_Game);
             this.grBox_Extentions.Controls.Add(this.btn_Practice);
             this.grBox_Extentions.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grBox_Extentions.Location = new System.Drawing.Point(6, 6);
             this.grBox_Extentions.Name = "grBox_Extentions";
-            this.grBox_Extentions.Size = new System.Drawing.Size(201, 62);
+            this.grBox_Extentions.Size = new System.Drawing.Size(132, 62);
             this.grBox_Extentions.TabIndex = 1;
             this.grBox_Extentions.TabStop = false;
             this.grBox_Extentions.Text = "Tiện ích";
-            // 
-            // btn_Game
-            // 
-            this.btn_Game.BackColor = System.Drawing.Color.SeaGreen;
-            this.btn_Game.FlatAppearance.BorderSize = 0;
-            this.btn_Game.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Game.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Game.ForeColor = System.Drawing.Color.White;
-            this.btn_Game.Location = new System.Drawing.Point(102, 23);
-            this.btn_Game.Name = "btn_Game";
-            this.btn_Game.Size = new System.Drawing.Size(90, 28);
-            this.btn_Game.TabIndex = 14;
-            this.btn_Game.Text = "Trò chơi";
-            this.btn_Game.UseVisualStyleBackColor = false;
-            this.btn_Game.Click += new System.EventHandler(this.btn_Game_Click);
             // 
             // btn_Practice
             // 
@@ -647,7 +630,7 @@ namespace Dictionary.Forms.Search
             this.btn_Practice.ForeColor = System.Drawing.Color.White;
             this.btn_Practice.Location = new System.Drawing.Point(6, 23);
             this.btn_Practice.Name = "btn_Practice";
-            this.btn_Practice.Size = new System.Drawing.Size(90, 28);
+            this.btn_Practice.Size = new System.Drawing.Size(119, 28);
             this.btn_Practice.TabIndex = 13;
             this.btn_Practice.Text = "Luyện tập";
             this.btn_Practice.UseVisualStyleBackColor = false;
@@ -659,9 +642,9 @@ namespace Dictionary.Forms.Search
             this.grBox_Settings.Controls.Add(this.btn_ExportDic);
             this.grBox_Settings.Controls.Add(this.btn_ResotreSetting);
             this.grBox_Settings.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grBox_Settings.Location = new System.Drawing.Point(213, 6);
+            this.grBox_Settings.Location = new System.Drawing.Point(144, 6);
             this.grBox_Settings.Name = "grBox_Settings";
-            this.grBox_Settings.Size = new System.Drawing.Size(349, 62);
+            this.grBox_Settings.Size = new System.Drawing.Size(418, 62);
             this.grBox_Settings.TabIndex = 0;
             this.grBox_Settings.TabStop = false;
             this.grBox_Settings.Text = "Cài đặt";
@@ -673,11 +656,11 @@ namespace Dictionary.Forms.Search
             this.btn_Trans.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Trans.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Trans.ForeColor = System.Drawing.Color.White;
-            this.btn_Trans.Location = new System.Drawing.Point(255, 23);
+            this.btn_Trans.Location = new System.Drawing.Point(292, 23);
             this.btn_Trans.Name = "btn_Trans";
-            this.btn_Trans.Size = new System.Drawing.Size(88, 28);
+            this.btn_Trans.Size = new System.Drawing.Size(120, 28);
             this.btn_Trans.TabIndex = 17;
-            this.btn_Trans.Text = "Dịch";
+            this.btn_Trans.Text = "Dịch văn bản";
             this.btn_Trans.UseVisualStyleBackColor = false;
             this.btn_Trans.Click += new System.EventHandler(this.btn_Trans_Click);
             // 
@@ -688,9 +671,9 @@ namespace Dictionary.Forms.Search
             this.btn_ExportDic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ExportDic.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ExportDic.ForeColor = System.Drawing.Color.White;
-            this.btn_ExportDic.Location = new System.Drawing.Point(142, 23);
+            this.btn_ExportDic.Location = new System.Drawing.Point(168, 23);
             this.btn_ExportDic.Name = "btn_ExportDic";
-            this.btn_ExportDic.Size = new System.Drawing.Size(107, 28);
+            this.btn_ExportDic.Size = new System.Drawing.Size(118, 28);
             this.btn_ExportDic.TabIndex = 16;
             this.btn_ExportDic.Text = "Xuất từ điển";
             this.btn_ExportDic.UseVisualStyleBackColor = false;
@@ -705,7 +688,7 @@ namespace Dictionary.Forms.Search
             this.btn_ResotreSetting.ForeColor = System.Drawing.Color.White;
             this.btn_ResotreSetting.Location = new System.Drawing.Point(6, 23);
             this.btn_ResotreSetting.Name = "btn_ResotreSetting";
-            this.btn_ResotreSetting.Size = new System.Drawing.Size(130, 28);
+            this.btn_ResotreSetting.Size = new System.Drawing.Size(156, 28);
             this.btn_ResotreSetting.TabIndex = 15;
             this.btn_ResotreSetting.Text = "Khôi phục ứng dụng";
             this.btn_ResotreSetting.UseVisualStyleBackColor = false;
@@ -800,7 +783,6 @@ namespace Dictionary.Forms.Search
         private System.Windows.Forms.Button btn_EditDics;
         private System.Windows.Forms.Button btn_DelWord;
         private System.Windows.Forms.GroupBox grBox_Extentions;
-        private System.Windows.Forms.Button btn_Game;
         private System.Windows.Forms.Button btn_Practice;
         private System.Windows.Forms.GroupBox grBox_Settings;
         private System.Windows.Forms.Button btn_ResotreSetting;

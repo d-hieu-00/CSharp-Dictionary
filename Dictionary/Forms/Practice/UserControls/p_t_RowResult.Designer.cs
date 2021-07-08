@@ -44,6 +44,7 @@ namespace Dictionary.Forms.Practice.UserControls
             this.lb_No.TabIndex = 0;
             this.lb_No.Text = "STT";
             this.lb_No.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lb_No.Click += new System.EventHandler(this.lb_No_Click);
             // 
             // lb_Result
             // 
@@ -55,6 +56,7 @@ namespace Dictionary.Forms.Practice.UserControls
             this.lb_Result.TabIndex = 1;
             this.lb_Result.Text = "40/45";
             this.lb_Result.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lb_Result.Click += new System.EventHandler(this.lb_No_Click);
             // 
             // lb_Time
             // 
@@ -66,6 +68,7 @@ namespace Dictionary.Forms.Practice.UserControls
             this.lb_Time.TabIndex = 2;
             this.lb_Time.Text = "40:45";
             this.lb_Time.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lb_Time.Click += new System.EventHandler(this.lb_No_Click);
             // 
             // p_t_RowResult
             // 

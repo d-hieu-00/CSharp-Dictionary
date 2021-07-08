@@ -61,12 +61,6 @@
   <ItemGroup>
     <Compile Include="Classes\Config.cs" />
     <Compile Include="Classes\Utility.cs" />
-    <Compile Include="Forms\Game\Games.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Game\Games.Designer.cs">
-      <DependentUpon>Games.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,9 +181,6 @@
     <Compile Include="Resources\MyRes\MsgGames.cs" />
     <Compile Include="Resources\MyRes\MsgWord.cs" />
     <Compile Include="Resources\MyRes\Resources.cs" />
-    <EmbeddedResource Include="Forms\Game\Games.resx">
-      <DependentUpon>Games.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -201,6 +192,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Practice\UserControls\p_Play.resx">
       <DependentUpon>p_Play.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Practice\UserControls\p_Playing.resx">
+      <DependentUpon>p_Playing.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Practice\UserControls\p_RowLession.resx">
       <DependentUpon>p_RowLession.cs</DependentUpon>
@@ -262,11 +256,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\Game\UserControls\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\complete.mp3" />
+    <None Include="Resources\incorrect.mp3" />
+    <None Include="Resources\correct.mp3" />
     <None Include="Resources\Cat_roll.gif" />
     <None Include="Resources\icon.png" />
   </ItemGroup>

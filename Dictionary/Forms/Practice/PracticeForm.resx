@@ -117,8 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="rTbox_Guild.Text" xml:space="preserve">
+    <value>Thêm chủ đề
+Tạo thư mục với tên thực là tên chủ đề 'Animal'
+Dùng tính năng xuất từ điển để lưu từ với tên tệp 'Words.txt' và lưu trong thư mục chủ đề
+Tạo thư mục 'Pics' lưu hình dạng '*.jpg' có tên hình trùng với tên từ vựng và viết thường 'fox.jpg'
+Thêm thư mục vừa tạo vào @dir
+
+Ví dụ
+.../Topics/Animal/
+               + Words.txt
+               + Pics/
+                         + fox.jpg
+Thay nhạc nền
+Đổi tệp 'background.mp3' trong đường dẫn bằng tệp nhạc trùng tên khác</value>
+  </data>
   <metadata name="timer_CheckLessionClick.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
+  </metadata>
+  <metadata name="timer_CheckPlaying.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>201, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
