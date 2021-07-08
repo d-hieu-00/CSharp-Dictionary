@@ -60,6 +60,7 @@ namespace Dictionary.Forms.Practice.UserControls
             this.btn_DelAllHistory.TabIndex = 26;
             this.btn_DelAllHistory.Text = "Xóa tất cả lịch sử";
             this.btn_DelAllHistory.UseVisualStyleBackColor = false;
+            this.btn_DelAllHistory.Click += new System.EventHandler(this.btn_DelAllHistory_Click);
             // 
             // btn_Play
             // 

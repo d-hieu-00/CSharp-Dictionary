@@ -26,5 +26,10 @@ namespace Dictionary.Resources.Model
         {
             return new Result(this);
         }
+        public void Clear()
+        {
+            Results.Clear();
+            DetailResult.Clear();
+        }
     }
 }

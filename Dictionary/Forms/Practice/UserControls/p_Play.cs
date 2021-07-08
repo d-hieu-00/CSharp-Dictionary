@@ -239,5 +239,24 @@ namespace Dictionary.Forms.Practice.UserControls
         }
         #endregion
 
+        private void btn_DelAllHistory_Click(object sender, EventArgs e)
+        {
+            switch (i_form)
+            {
+                case 1:
+                    Resources.Resources.dataPractice.Results[0].Clear();
+                    Resources.Resources.dataPractice.Save();
+                    break;
+                case 2:
+                    Resources.Resources.dataPractice.Results[1].Clear();
+                    Resources.Resources.dataPractice.Save();
+                    break;
+                case 3:
+                    Resources.Resources.dataPractice.Results[2].Clear();
+                    Resources.Resources.dataPractice.Save();
+                    break;
+            }
+            SetDataForm(i_form);
+        }
     }
 }
