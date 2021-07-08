@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dictionary.Resources.Model
 {
-    class Mean
+    public class Mean
     {
         public string TypeWord { get; set; }
         public List<string> Meanings { get; set; }

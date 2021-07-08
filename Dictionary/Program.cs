@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dictionary.Forms;
@@ -18,7 +20,8 @@ namespace Dictionary
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Console.WriteLine(System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));
+            Application.ApplicationExit += OnApplicationExit;
+
             if (Resources.Resources.InitRes())
             {
                 Application.Run(Resources.Resources.main.mainForm);
@@ -28,6 +31,10 @@ namespace Dictionary
                 MessageBox.Show("Lỗi mở tệp cấu hình", "Lỗi mở ứng dụng", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
+        }
+        private static void OnApplicationExit(object sender, EventArgs e)
+        {
+
         }
     }
 }

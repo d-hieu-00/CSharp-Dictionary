@@ -212,6 +212,20 @@ namespace Dictionary.Resources
                 ind = 26;
             return WordsAlphabet[ind][val];
         }
+        public Word GetWord(int ind)
+        {
+            int key = 0;
+            int _ind = ind;
+            foreach(var i in Maps)
+            {
+                if (i.Count <= _ind)
+                {
+                    _ind -= i.Count;
+                    key++;
+                }
+            }
+            return WordsAlphabet[key][_ind];
+        }
         public void Remove(string key, int val)
         {
             int ind = key.ToLower()[0] - 97;

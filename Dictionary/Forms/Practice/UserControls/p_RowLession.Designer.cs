@@ -29,39 +29,41 @@ namespace Dictionary.Forms.Practice.UserControls
         /// </summary>
         private void InitializeComponent()
         {
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.lb_InfoTopic = new System.Windows.Forms.Label();
+            this.lb_TitleTopic = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label15
+            // lb_InfoTopic
             // 
-            this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(0, 24);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(180, 41);
-            this.label15.TabIndex = 1;
-            this.label15.Text = "Số từ vựng : 12";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lb_InfoTopic.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lb_InfoTopic.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_InfoTopic.Location = new System.Drawing.Point(0, 24);
+            this.lb_InfoTopic.Name = "lb_InfoTopic";
+            this.lb_InfoTopic.Size = new System.Drawing.Size(180, 41);
+            this.lb_InfoTopic.TabIndex = 1;
+            this.lb_InfoTopic.Text = "Số từ vựng : 12";
+            this.lb_InfoTopic.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lb_InfoTopic.Click += new System.EventHandler(this.lb_InfoTopic_Click);
             // 
-            // label14
+            // lb_TitleTopic
             // 
-            this.label14.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(0, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(180, 24);
-            this.label14.TabIndex = 0;
-            this.label14.Text = "Lession 1 : Contract";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lb_TitleTopic.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lb_TitleTopic.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_TitleTopic.Location = new System.Drawing.Point(0, 0);
+            this.lb_TitleTopic.Name = "lb_TitleTopic";
+            this.lb_TitleTopic.Size = new System.Drawing.Size(180, 24);
+            this.lb_TitleTopic.TabIndex = 0;
+            this.lb_TitleTopic.Text = "Lession 1 : Contract";
+            this.lb_TitleTopic.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lb_TitleTopic.Click += new System.EventHandler(this.lb_InfoTopic_Click);
             // 
             // p_RowLession
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Bisque;
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.label14);
+            this.Controls.Add(this.lb_InfoTopic);
+            this.Controls.Add(this.lb_TitleTopic);
             this.ForeColor = System.Drawing.Color.Black;
             this.Name = "p_RowLession";
             this.Size = new System.Drawing.Size(180, 65);
@@ -71,7 +73,7 @@ namespace Dictionary.Forms.Practice.UserControls
 
         #endregion
 
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lb_InfoTopic;
+        private System.Windows.Forms.Label lb_TitleTopic;
     }
 }

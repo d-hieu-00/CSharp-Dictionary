@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using System.Speech.Synthesis;
 using System.Net.Http;
 using Newtonsoft.Json;
+using System.Reflection;
 
 namespace Dictionary.Classes
 {
@@ -83,6 +84,16 @@ namespace Dictionary.Classes
             }
             return ret;
         }
+        public static Dictionary<Word, Word> CloneDictionaryCloningValues
+           (Dictionary<Word, Word> original)
+        {
+            Dictionary<Word, Word> ret = new Dictionary<Word, Word>(original.Count, original.Comparer);
+            foreach (KeyValuePair<Word, Word> entry in original)
+            {
+                ret.Add(entry.Key.Clone(), entry.Value.Clone());
+            }
+            return ret;
+        }
         public static Dictionary<int, List<string>> CloneDictionaryCloningValues
             (Dictionary<int, List<string>> original)
         {
@@ -105,6 +116,83 @@ namespace Dictionary.Classes
         }
         #endregion
         #region Audio
+        public class LoopStream : WaveStream
+        {
+            WaveStream sourceStream;
+
+            /// <summary>
+            /// Creates a new Loop stream
+            /// </summary>
+            /// <param name="sourceStream">The stream to read from. Note: the Read method of this stream should return 0 when it reaches the end
+            /// or else we will not loop to the start again.</param>
+            public LoopStream(WaveStream sourceStream)
+            {
+                this.sourceStream = sourceStream;
+                this.EnableLooping = true;
+            }
+
+            /// <summary>
+            /// Use this to turn looping on or off
+            /// </summary>
+            public bool EnableLooping { get; set; }
+
+            /// <summary>
+            /// Return source stream's wave format
+            /// </summary>
+            public override WaveFormat WaveFormat
+            {
+                get { return sourceStream.WaveFormat; }
+            }
+
+            /// <summary>
+            /// LoopStream simply returns
+            /// </summary>
+            public override long Length
+            {
+                get { return sourceStream.Length; }
+            }
+
+            /// <summary>
+            /// LoopStream simply passes on positioning to source stream
+            /// </summary>
+            public override long Position
+            {
+                get { return sourceStream.Position; }
+                set { sourceStream.Position = value; }
+            }
+
+            public override int Read(byte[] buffer, int offset, int count)
+            {
+                int totalBytesRead = 0;
+
+                while (totalBytesRead < count)
+                {
+                    int bytesRead = sourceStream.Read(buffer, offset + totalBytesRead, count - totalBytesRead);
+                    if (bytesRead == 0)
+                    {
+                        if (sourceStream.Position == 0 || !EnableLooping)
+                        {
+                            // something wrong with the source stream
+                            break;
+                        }
+                        // loop
+                        sourceStream.Position = 0;
+                    }
+                    totalBytesRead += bytesRead;
+                }
+                return totalBytesRead;
+            }
+        }
+        public static void Mute()
+        {
+            var wo = new WaveOutEvent();
+            wo.Volume = 0.0F;
+        }
+        public static void UnMute()
+        {
+            var wo = new WaveOutEvent();
+            wo.Volume = 1.0F;
+        }
         public static string GetAudioByWord(string w)
         {
             string audio = null; 
@@ -137,10 +225,10 @@ namespace Dictionary.Classes
         public static void SpeechString(string q)
         {
             SpeechSynthesizer ss = new SpeechSynthesizer();
-            
-/*            var l = ss.GetInstalledVoices();
-            ss.SelectVoice(l[1].VoiceInfo.Name);*/
 
+            /*var l = ss.GetInstalledVoices();
+            ss.SelectVoice(l[1].VoiceInfo.Name);*/
+            ss.Volume = (int) Config.AllVolume*100;
             ss.SpeakAsync(q);
         }
         public static void PlayMp3FromUrl(string url)
@@ -150,6 +238,7 @@ namespace Dictionary.Classes
             {
                 wo.Init(mf);
                 wo.Play();
+                wo.Volume = Config.AllVolume;
                 Resources.Resources.main.searchForm.Invoke(new MethodInvoker(delegate ()
                 {
                     Resources.Resources.main.searchForm.Cursor = Cursors.Default;
@@ -157,38 +246,96 @@ namespace Dictionary.Classes
                 while (wo.PlaybackState == PlaybackState.Playing)
                 {
                     Thread.Sleep(100);
+                    wo.Volume = Config.AllVolume;
                 }
             }
         }
-        public static void PlayMp3GameFromUrl(string url)
+        public static Thread PlayMp3BackgroundFromUrl(string url)
         {
-            if (!Config.PlaySoundGame)
-                return;
-            using (var mf = new MediaFoundationReader(url))
-            using (var wo = new WaveOutEvent())
+            var _t = new Thread(() =>
             {
-                wo.Init(mf);
-                wo.Play();
-                while (wo.PlaybackState == PlaybackState.Playing)
+                AudioFileReader reader = new AudioFileReader(@url);
+                reader.Volume = 0.2F;
+                LoopStream loop = new LoopStream(reader);
+                using (var wo = new WaveOutEvent())
                 {
-                    Thread.Sleep(1000);
+                    wo.Init(loop);
+                    wo.Play();
+                    wo.Volume = Config.AllVolume;
+                    while (true)
+                    {
+                        reader.Volume = Config.BackgroundVolume;
+                        wo.Volume = Config.AllVolume;
+                        Thread.Sleep(100);
+                    }
                 }
-            }
+            });
+            _t.Start();
+            return _t;
         }
-        public static Thread PlayMp3GameFromUrlBackground(string url)
+        public static Thread PlayMp3Correct()
         {
-            if (!Config.PlaySoundGame)
+            if (!Config.GameSound)
                 return null;
             var _t = new Thread(() =>
             {
-                using (var mf = new MediaFoundationReader(url))
+                MemoryStream mp3file = new MemoryStream(Properties.Resources.correct);
+                using (var mf = new WaveFileReader(mp3file))
                 using (var wo = new WaveOutEvent())
                 {
                     wo.Init(mf);
                     wo.Play();
+                    wo.Volume = Config.AllVolume;
                     while (wo.PlaybackState == PlaybackState.Playing)
                     {
                         Thread.Sleep(1000);
+                        wo.Volume = Config.AllVolume;
+                    }
+                }
+            });
+            _t.Start();
+            return _t;
+        }
+        public static Thread PlayMp3InCorrect()
+        {
+            if (!Config.GameSound)
+                return null;
+            var _t = new Thread(() =>
+            {
+                MemoryStream mp3file = new MemoryStream(Properties.Resources.incorrect);
+                using (var mf = new Mp3FileReader(mp3file))
+                using (var wo = new WaveOutEvent())
+                {
+                    wo.Init(mf);
+                    wo.Play();
+                    wo.Volume = Config.AllVolume;
+                    while (wo.PlaybackState == PlaybackState.Playing)
+                    {
+                        Thread.Sleep(1000);
+                        wo.Volume = Config.AllVolume;
+                    }
+                }
+            });
+            _t.Start();
+            return _t;
+        }
+        public static Thread PlayMp3Complete()
+        {
+            if (!Config.GameSound)
+                return null;
+            var _t = new Thread(() =>
+            {
+                MemoryStream mp3file = new MemoryStream(Properties.Resources.complete);
+                using (var mf = new Mp3FileReader(mp3file))
+                using (var wo = new WaveOutEvent())
+                {
+                    wo.Init(mf);
+                    wo.Play();
+                    wo.Volume = Config.AllVolume;
+                    while (wo.PlaybackState == PlaybackState.Playing)
+                    {
+                        Thread.Sleep(1000);
+                        wo.Volume = Config.AllVolume;
                     }
                 }
             });
@@ -344,7 +491,7 @@ namespace Dictionary.Classes
             for (int i=0; i<word.Means.Count; i++)
             {
                 if (word.Means[i].TypeWord != null && word.Means[i].TypeWord != "")
-                    w.Add("*" + word.Means[i].TypeWord);
+                    w.Add(" *" + word.Means[i].TypeWord);
                 var means = word.Means[i].Meanings;
                 for (var _i=0; _i<means.Count; _i++)
                 {
@@ -705,6 +852,168 @@ namespace Dictionary.Classes
                 rTBox_Word.ResumeLayout();
             }));
         }
+        public static void LoadWordForView(RichTextBox rTBox_Word, Word w)
+        {
+            //Word w = ReadWord(new List<string>(word.Split('\n')));
+            rTBox_Word.Invoke(new MethodInvoker(delegate ()
+            {
+                rTBox_Word.SuspendLayout();
+                rTBox_Word.Text = "";
+                rTBox_Word.Tag = w;
+
+                // vocabulary and pronouce
+                RtboxAppendText(rTBox_Word, w.Vocabulary,
+                    Config.colorVoc,
+                    new Font("Segoe UI", 11F, FontStyle.Bold));
+                if (w.Pronounce != null && w.Pronounce != "")
+                    RtboxAppendText(rTBox_Word, '\n' + w.Pronounce,
+                        Config.colorPro,
+                        new Font("Segoe UI", 10F, FontStyle.Regular));
+                // means
+                for (var i = 0; i < w.Means.Count; i++)
+                {
+                    if (w.Means[i].TypeWord != null)
+                    {
+                        RtboxAppendText(rTBox_Word, "\n* " + w.Means[i].TypeWord,
+                            Config.colorTyp,
+                            new Font("Segoe UI", 9F, FontStyle.Bold));
+                    }
+
+                    for (var _i = 0; _i < w.Means[i].Meanings.Count; _i++)
+                    {
+                        RtboxAppendText(rTBox_Word, "\n   - " + w.Means[i].Meanings[_i],
+                            Config.colorMea,
+                            new Font("Segoe UI", 9F, FontStyle.Regular));
+                        // sub mean, exam
+                        var subMean = w.Means[i].SubMeans[_i];
+                        var exam = w.Means[i].Examples[_i];
+                        for (var j = 0; j < subMean.Count; j++)
+                        {
+                            RtboxAppendText(rTBox_Word, "\n     " + subMean[j],
+                                Config.colorSub,
+                                new Font("Segoe UI", 8F, FontStyle.Italic));
+                        }
+                        for (var j = 0; j < exam.Count; j++)
+                        {
+                            string[] e;
+                            if (!exam[j].Contains('+'))
+                                e = (exam[j] + '+').Split('+');
+                            e = exam[j].Split('+');
+                            RtboxAppendText(rTBox_Word, "\n     + \"" + e[0] + '\"',
+                                Config.colorExm,
+                                new Font("Segoe UI", 8F, FontStyle.Regular));
+                            RtboxAppendText(rTBox_Word, " - " + e[1],
+                                Config.colorExm,
+                                new Font("Segoe UI", 8F, FontStyle.Italic));
+                        }
+                    }
+                    if (w.Means[i].SubMeans.ContainsKey(-1))
+                    {
+                        var subMean = w.Means[i].SubMeans[-1];
+                        for (var j = 0; j < subMean.Count; j++)
+                        {
+                            RtboxAppendText(rTBox_Word, "\n     " + subMean[j],
+                                Config.colorSub,
+                                new Font("Segoe UI", 8F, FontStyle.Italic));
+                        }
+                    }
+                    if (w.Means[i].Examples.ContainsKey(-1))
+                    {
+                        var exam = w.Means[i].Examples[-1];
+                        for (var j = 0; j < exam.Count; j++)
+                        {
+                            string[] e;
+                            if (!exam[j].Contains('+'))
+                                e = (exam[j] + '+').Split('+');
+                            e = exam[j].Split('+');
+                            RtboxAppendText(rTBox_Word, "\n     + \"" + e[0] + '\"',
+                                Config.colorExm,
+                                new Font("Segoe UI", 8F, FontStyle.Regular));
+                            RtboxAppendText(rTBox_Word, " - " + e[1],
+                                Config.colorExm,
+                                new Font("Segoe UI", 8F, FontStyle.Italic));
+                        }
+                    }
+                }
+                // sub word
+                for (var __i = 0; __i < w.SubWords.Count; __i++)
+                {
+                    var _w = w.SubWords[__i];
+
+                    // vocabulary
+                    RtboxAppendText(rTBox_Word, "\n# " + _w.Vocabulary,
+                        Config.colorSub,
+                        new Font("Segoe UI", 9F, FontStyle.Bold));
+                    // means
+                    for (var i = 0; i < _w.Means.Count; i++)
+                    {
+                        if (_w.Means[i].TypeWord != null)
+                        {
+                            RtboxAppendText(rTBox_Word, "\n   * " + _w.Means[i].TypeWord,
+                                Config.colorTyp,
+                                new Font("Segoe UI", 9F, FontStyle.Bold));
+                        }
+
+                        for (var _i = 0; _i < _w.Means[i].Meanings.Count; _i++)
+                        {
+                            RtboxAppendText(rTBox_Word, "\n       - " + _w.Means[i].Meanings[_i],
+                                Config.colorMea,
+                                new Font("Segoe UI", 9F, FontStyle.Regular));
+                            // sub mean, exam
+                            var subMean = _w.Means[i].SubMeans[_i];
+                            var exam = _w.Means[i].Examples[_i];
+                            for (var j = 0; j < subMean.Count; j++)
+                            {
+                                RtboxAppendText(rTBox_Word, "\n        " + subMean[j],
+                                    Config.colorSub,
+                                    new Font("Segoe UI", 8F, FontStyle.Italic));
+                            }
+                            for (var j = 0; j < exam.Count; j++)
+                            {
+                                string[] e;
+                                if (!exam[j].Contains('+'))
+                                    e = (exam[j] + '+').Split('+');
+                                e = exam[j].Split('+');
+                                RtboxAppendText(rTBox_Word, "\n          + \"" + e[0] + '\"',
+                                    Config.colorExm,
+                                    new Font("Segoe UI", 8F, FontStyle.Regular));
+                                RtboxAppendText(rTBox_Word, " - " + e[1],
+                                    Config.colorExm,
+                                    new Font("Segoe UI", 8F, FontStyle.Italic));
+                            }
+                        }
+                        if (_w.Means[i].SubMeans.ContainsKey(-1))
+                        {
+                            var subMean = _w.Means[i].SubMeans[-1];
+                            for (var j = 0; j < subMean.Count; j++)
+                            {
+                                RtboxAppendText(rTBox_Word, "\n        " + subMean[j],
+                                    Config.colorSub,
+                                    new Font("Segoe UI", 8F, FontStyle.Italic));
+                            }
+                        }
+                        if (_w.Means[i].Examples.ContainsKey(-1))
+                        {
+                            var exam = _w.Means[i].Examples[-1];
+                            for (var j = 0; j < exam.Count; j++)
+                            {
+                                string[] e;
+                                if (!exam[j].Contains('+'))
+                                    e = (exam[j] + '+').Split('+');
+                                e = exam[j].Split('+');
+                                RtboxAppendText(rTBox_Word, "\n          + \"" + e[0] + '\"',
+                                    Config.colorExm,
+                                    new Font("Segoe UI", 8F, FontStyle.Regular));
+                                RtboxAppendText(rTBox_Word, " - " + e[1],
+                                    Config.colorExm,
+                                    new Font("Segoe UI", 8F, FontStyle.Italic));
+                            }
+                        }
+                    }
+                }
+                rTBox_Word.ResumeLayout();
+            }));
+        }
         public static void LoadRuleWord(RichTextBox rTBox_Word)
         {
             rTBox_Word.Invoke(new MethodInvoker(delegate ()
@@ -762,12 +1071,10 @@ namespace Dictionary.Classes
         {
             public string translatedText { get; set; }
         }
-
         public class Data
         {
             public List<Translation> translations { get; set; }
         }
-
         public class RootTrans
         {
             public Data data { get; set; }
@@ -795,6 +1102,15 @@ namespace Dictionary.Classes
                 return null;
             }
         }
+        #endregion
+        #region resource
+        public static Stream GetResourceStream(string filename)
+        {
+            Assembly asm = Assembly.GetExecutingAssembly();
+            string resname = asm.GetName().Name + "." + filename;
+            return asm.GetManifestResourceStream(resname);
+        }
+
         #endregion
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dictionary.Resources.Model
 {
-    class User
+    public class User
     {
         public Dictionary<int, Dictionary<string, int>> History { get; set; }
         public Dictionary<int, Dictionary<string, int>> Favorite { get; set; }
