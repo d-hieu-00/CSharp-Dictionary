@@ -49,7 +49,7 @@ namespace Dictionary.Forms.Practice.UserControls
             // 
             // btn_DelAllHistory
             // 
-            this.btn_DelAllHistory.BackColor = System.Drawing.Color.DarkGray;
+            this.btn_DelAllHistory.BackColor = System.Drawing.Color.ForestGreen;
             this.btn_DelAllHistory.FlatAppearance.BorderSize = 0;
             this.btn_DelAllHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_DelAllHistory.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -64,22 +64,22 @@ namespace Dictionary.Forms.Practice.UserControls
             // 
             // btn_Play
             // 
-            this.btn_Play.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_Play.BackColor = System.Drawing.Color.LightSeaGreen;
             this.btn_Play.FlatAppearance.BorderSize = 0;
             this.btn_Play.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Play.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Play.ForeColor = System.Drawing.Color.White;
+            this.btn_Play.Image = global::Dictionary.Properties.Resources.icons8_video_game_48px;
             this.btn_Play.Location = new System.Drawing.Point(542, 312);
             this.btn_Play.Name = "btn_Play";
             this.btn_Play.Size = new System.Drawing.Size(158, 62);
             this.btn_Play.TabIndex = 24;
-            this.btn_Play.Text = "Chơi";
             this.btn_Play.UseVisualStyleBackColor = false;
             this.btn_Play.Click += new System.EventHandler(this.btn_Play_Click);
             // 
             // lb_DetailResult
             // 
-            this.lb_DetailResult.BackColor = System.Drawing.Color.DarkGray;
+            this.lb_DetailResult.BackColor = System.Drawing.Color.ForestGreen;
             this.lb_DetailResult.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_DetailResult.ForeColor = System.Drawing.Color.White;
             this.lb_DetailResult.Location = new System.Drawing.Point(219, 7);

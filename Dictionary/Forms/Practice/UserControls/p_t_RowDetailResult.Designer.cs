@@ -37,7 +37,7 @@ namespace Dictionary.Forms.Practice.UserControls
             // lb_No
             // 
             this.lb_No.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lb_No.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_No.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_No.Location = new System.Drawing.Point(0, 0);
             this.lb_No.Name = "lb_No";
             this.lb_No.Size = new System.Drawing.Size(55, 23);
@@ -48,7 +48,7 @@ namespace Dictionary.Forms.Practice.UserControls
             // lb_Result
             // 
             this.lb_Result.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lb_Result.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_Result.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_Result.Location = new System.Drawing.Point(55, 0);
             this.lb_Result.Name = "lb_Result";
             this.lb_Result.Size = new System.Drawing.Size(91, 23);
@@ -59,7 +59,7 @@ namespace Dictionary.Forms.Practice.UserControls
             // lb_asw
             // 
             this.lb_asw.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lb_asw.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_asw.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_asw.ForeColor = System.Drawing.Color.MediumSeaGreen;
             this.lb_asw.Location = new System.Drawing.Point(146, 0);
             this.lb_asw.Name = "lb_asw";
