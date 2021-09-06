@@ -100,7 +100,7 @@ namespace Dictionary.Forms.Search
             // 
             // panel_Main
             // 
-            this.panel_Main.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel_Main.BackColor = System.Drawing.Color.LemonChiffon;
             this.panel_Main.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_Main.Controls.Add(this.cbox_SizeSearch);
             this.panel_Main.Controls.Add(this.panel1);
@@ -125,6 +125,7 @@ namespace Dictionary.Forms.Search
             // 
             // cbox_SizeSearch
             // 
+            this.cbox_SizeSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.cbox_SizeSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbox_SizeSearch.FormattingEnabled = true;
             this.cbox_SizeSearch.Items.AddRange(new object[] {
@@ -200,24 +201,25 @@ namespace Dictionary.Forms.Search
             // 
             // Btn_Search
             // 
-            this.Btn_Search.BackColor = System.Drawing.Color.Gold;
+            this.Btn_Search.BackColor = System.Drawing.Color.OldLace;
             this.Btn_Search.FlatAppearance.BorderSize = 0;
             this.Btn_Search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Search.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Search.ForeColor = System.Drawing.Color.Black;
-            this.Btn_Search.Location = new System.Drawing.Point(133, 106);
+            this.Btn_Search.Image = global::Dictionary.Properties.Resources.icons8_search_in_list_100px;
+            this.Btn_Search.Location = new System.Drawing.Point(133, 76);
             this.Btn_Search.Name = "Btn_Search";
-            this.Btn_Search.Size = new System.Drawing.Size(109, 23);
+            this.Btn_Search.Size = new System.Drawing.Size(109, 70);
             this.Btn_Search.TabIndex = 10;
-            this.Btn_Search.Text = "Tìm kiếm";
             this.Btn_Search.UseVisualStyleBackColor = false;
             this.Btn_Search.Click += new System.EventHandler(this.Btn_Search_Click);
             // 
             // cBox_Dics
             // 
+            this.cBox_Dics.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.cBox_Dics.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBox_Dics.FormattingEnabled = true;
-            this.cBox_Dics.Location = new System.Drawing.Point(133, 77);
+            this.cBox_Dics.Location = new System.Drawing.Point(11, 102);
             this.cBox_Dics.Name = "cBox_Dics";
             this.cBox_Dics.Size = new System.Drawing.Size(109, 21);
             this.cBox_Dics.TabIndex = 9;
@@ -226,7 +228,7 @@ namespace Dictionary.Forms.Search
             // 
             this.rBtn_AllDics.AutoSize = true;
             this.rBtn_AllDics.Checked = true;
-            this.rBtn_AllDics.Location = new System.Drawing.Point(11, 109);
+            this.rBtn_AllDics.Location = new System.Drawing.Point(11, 129);
             this.rBtn_AllDics.Name = "rBtn_AllDics";
             this.rBtn_AllDics.Size = new System.Drawing.Size(95, 17);
             this.rBtn_AllDics.TabIndex = 8;
@@ -298,11 +300,11 @@ namespace Dictionary.Forms.Search
             this.btn_DelWord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_DelWord.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_DelWord.ForeColor = System.Drawing.Color.White;
-            this.btn_DelWord.Location = new System.Drawing.Point(3, 94);
+            this.btn_DelWord.Image = global::Dictionary.Properties.Resources.icons8_delete_50px;
+            this.btn_DelWord.Location = new System.Drawing.Point(3, 207);
             this.btn_DelWord.Name = "btn_DelWord";
-            this.btn_DelWord.Size = new System.Drawing.Size(75, 25);
+            this.btn_DelWord.Size = new System.Drawing.Size(75, 62);
             this.btn_DelWord.TabIndex = 7;
-            this.btn_DelWord.Text = "Xóa từ";
             this.btn_DelWord.UseVisualStyleBackColor = false;
             this.btn_DelWord.Click += new System.EventHandler(this.btn_DelWord_Click);
             // 
@@ -313,11 +315,11 @@ namespace Dictionary.Forms.Search
             this.btn_ModifyWord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ModifyWord.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ModifyWord.ForeColor = System.Drawing.Color.White;
-            this.btn_ModifyWord.Location = new System.Drawing.Point(3, 63);
+            this.btn_ModifyWord.Image = global::Dictionary.Properties.Resources.icons8_edit_50px;
+            this.btn_ModifyWord.Location = new System.Drawing.Point(3, 139);
             this.btn_ModifyWord.Name = "btn_ModifyWord";
-            this.btn_ModifyWord.Size = new System.Drawing.Size(75, 25);
+            this.btn_ModifyWord.Size = new System.Drawing.Size(75, 62);
             this.btn_ModifyWord.TabIndex = 6;
-            this.btn_ModifyWord.Text = "Sửa từ";
             this.btn_ModifyWord.UseVisualStyleBackColor = false;
             this.btn_ModifyWord.Click += new System.EventHandler(this.btn_ModifyWord_Click);
             // 
@@ -328,11 +330,11 @@ namespace Dictionary.Forms.Search
             this.btn_Mask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Mask.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Mask.ForeColor = System.Drawing.Color.White;
-            this.btn_Mask.Location = new System.Drawing.Point(3, 32);
+            this.btn_Mask.Image = global::Dictionary.Properties.Resources.icons8_ok_50px;
+            this.btn_Mask.Location = new System.Drawing.Point(3, 71);
             this.btn_Mask.Name = "btn_Mask";
-            this.btn_Mask.Size = new System.Drawing.Size(75, 25);
+            this.btn_Mask.Size = new System.Drawing.Size(75, 62);
             this.btn_Mask.TabIndex = 5;
-            this.btn_Mask.Text = "Đánh dấu";
             this.btn_Mask.UseVisualStyleBackColor = false;
             this.btn_Mask.Click += new System.EventHandler(this.btn_Mask_Click);
             // 
@@ -343,11 +345,11 @@ namespace Dictionary.Forms.Search
             this.btn_Listen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Listen.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Listen.ForeColor = System.Drawing.Color.White;
+            this.btn_Listen.Image = global::Dictionary.Properties.Resources.icons8_audio_50px;
             this.btn_Listen.Location = new System.Drawing.Point(3, 3);
             this.btn_Listen.Name = "btn_Listen";
-            this.btn_Listen.Size = new System.Drawing.Size(75, 23);
+            this.btn_Listen.Size = new System.Drawing.Size(75, 62);
             this.btn_Listen.TabIndex = 4;
-            this.btn_Listen.Text = "Nghe";
             this.btn_Listen.UseVisualStyleBackColor = false;
             this.btn_Listen.Click += new System.EventHandler(this.btn_Listen_Click);
             // 
@@ -357,10 +359,10 @@ namespace Dictionary.Forms.Search
             this.tabControl_Side.Controls.Add(this.tabPage_HistorySearch);
             this.tabControl_Side.Controls.Add(this.tabPage_DetailDic);
             this.tabControl_Side.Controls.Add(this.tabPage_Mask);
-            this.tabControl_Side.Location = new System.Drawing.Point(11, 135);
+            this.tabControl_Side.Location = new System.Drawing.Point(11, 152);
             this.tabControl_Side.Name = "tabControl_Side";
             this.tabControl_Side.SelectedIndex = 0;
-            this.tabControl_Side.Size = new System.Drawing.Size(238, 383);
+            this.tabControl_Side.Size = new System.Drawing.Size(238, 365);
             this.tabControl_Side.TabIndex = 2;
             // 
             // tabPage_Search
@@ -369,7 +371,7 @@ namespace Dictionary.Forms.Search
             this.tabPage_Search.Location = new System.Drawing.Point(4, 22);
             this.tabPage_Search.Name = "tabPage_Search";
             this.tabPage_Search.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Search.Size = new System.Drawing.Size(230, 357);
+            this.tabPage_Search.Size = new System.Drawing.Size(230, 339);
             this.tabPage_Search.TabIndex = 0;
             this.tabPage_Search.Text = "Tìm kiếm";
             this.tabPage_Search.UseVisualStyleBackColor = true;
@@ -379,7 +381,7 @@ namespace Dictionary.Forms.Search
             this.flwLayout_Search.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flwLayout_Search.Location = new System.Drawing.Point(3, 3);
             this.flwLayout_Search.Name = "flwLayout_Search";
-            this.flwLayout_Search.Size = new System.Drawing.Size(224, 351);
+            this.flwLayout_Search.Size = new System.Drawing.Size(224, 333);
             this.flwLayout_Search.TabIndex = 0;
             // 
             // tabPage_HistorySearch
@@ -389,7 +391,7 @@ namespace Dictionary.Forms.Search
             this.tabPage_HistorySearch.Location = new System.Drawing.Point(4, 22);
             this.tabPage_HistorySearch.Name = "tabPage_HistorySearch";
             this.tabPage_HistorySearch.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_HistorySearch.Size = new System.Drawing.Size(230, 357);
+            this.tabPage_HistorySearch.Size = new System.Drawing.Size(230, 339);
             this.tabPage_HistorySearch.TabIndex = 1;
             this.tabPage_HistorySearch.Text = "Lịch sử";
             this.tabPage_HistorySearch.UseVisualStyleBackColor = true;
@@ -401,7 +403,7 @@ namespace Dictionary.Forms.Search
             this.btn_DelAllHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_DelAllHistory.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_DelAllHistory.ForeColor = System.Drawing.Color.White;
-            this.btn_DelAllHistory.Location = new System.Drawing.Point(6, 330);
+            this.btn_DelAllHistory.Location = new System.Drawing.Point(6, 314);
             this.btn_DelAllHistory.Name = "btn_DelAllHistory";
             this.btn_DelAllHistory.Size = new System.Drawing.Size(218, 23);
             this.btn_DelAllHistory.TabIndex = 11;
@@ -414,7 +416,7 @@ namespace Dictionary.Forms.Search
             this.flwLayout_HistorySearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.flwLayout_HistorySearch.Location = new System.Drawing.Point(3, 3);
             this.flwLayout_HistorySearch.Name = "flwLayout_HistorySearch";
-            this.flwLayout_HistorySearch.Size = new System.Drawing.Size(224, 323);
+            this.flwLayout_HistorySearch.Size = new System.Drawing.Size(224, 307);
             this.flwLayout_HistorySearch.TabIndex = 0;
             // 
             // tabPage_DetailDic
@@ -426,7 +428,7 @@ namespace Dictionary.Forms.Search
             this.tabPage_DetailDic.Location = new System.Drawing.Point(4, 22);
             this.tabPage_DetailDic.Name = "tabPage_DetailDic";
             this.tabPage_DetailDic.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_DetailDic.Size = new System.Drawing.Size(230, 357);
+            this.tabPage_DetailDic.Size = new System.Drawing.Size(230, 339);
             this.tabPage_DetailDic.TabIndex = 2;
             this.tabPage_DetailDic.Text = "Chi tiết TĐ";
             // 
@@ -437,7 +439,7 @@ namespace Dictionary.Forms.Search
             this.btn_LoadDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_LoadDetail.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_LoadDetail.ForeColor = System.Drawing.Color.White;
-            this.btn_LoadDetail.Location = new System.Drawing.Point(6, 330);
+            this.btn_LoadDetail.Location = new System.Drawing.Point(6, 313);
             this.btn_LoadDetail.Name = "btn_LoadDetail";
             this.btn_LoadDetail.Size = new System.Drawing.Size(218, 23);
             this.btn_LoadDetail.TabIndex = 12;
@@ -450,7 +452,7 @@ namespace Dictionary.Forms.Search
             this.treeView_DetailDic.Dock = System.Windows.Forms.DockStyle.Top;
             this.treeView_DetailDic.Location = new System.Drawing.Point(3, 3);
             this.treeView_DetailDic.Name = "treeView_DetailDic";
-            this.treeView_DetailDic.Size = new System.Drawing.Size(224, 322);
+            this.treeView_DetailDic.Size = new System.Drawing.Size(224, 304);
             this.treeView_DetailDic.TabIndex = 4;
             this.treeView_DetailDic.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_DetailDic_AfterSelect);
             // 
@@ -460,7 +462,7 @@ namespace Dictionary.Forms.Search
             this.tabPage_Mask.Location = new System.Drawing.Point(4, 22);
             this.tabPage_Mask.Name = "tabPage_Mask";
             this.tabPage_Mask.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Mask.Size = new System.Drawing.Size(230, 357);
+            this.tabPage_Mask.Size = new System.Drawing.Size(230, 339);
             this.tabPage_Mask.TabIndex = 3;
             this.tabPage_Mask.Text = "Đánh dấu";
             this.tabPage_Mask.UseVisualStyleBackColor = true;
@@ -470,7 +472,7 @@ namespace Dictionary.Forms.Search
             this.flwLayout_MaskWord.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flwLayout_MaskWord.Location = new System.Drawing.Point(3, 3);
             this.flwLayout_MaskWord.Name = "flwLayout_MaskWord";
-            this.flwLayout_MaskWord.Size = new System.Drawing.Size(224, 351);
+            this.flwLayout_MaskWord.Size = new System.Drawing.Size(224, 333);
             this.flwLayout_MaskWord.TabIndex = 1;
             // 
             // tabControl_Top

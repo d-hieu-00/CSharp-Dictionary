@@ -376,11 +376,11 @@ namespace Dictionary.Forms.Practice
             this.btn_SoundGame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_SoundGame.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_SoundGame.ForeColor = System.Drawing.Color.White;
+            this.btn_SoundGame.Image = global::Dictionary.Properties.Resources.icons8_game_soccer_100px;
             this.btn_SoundGame.Location = new System.Drawing.Point(536, 3);
             this.btn_SoundGame.Name = "btn_SoundGame";
-            this.btn_SoundGame.Size = new System.Drawing.Size(109, 22);
+            this.btn_SoundGame.Size = new System.Drawing.Size(109, 55);
             this.btn_SoundGame.TabIndex = 8;
-            this.btn_SoundGame.Text = "Âm thanh trò chơi";
             this.btn_SoundGame.UseVisualStyleBackColor = false;
             this.btn_SoundGame.Click += new System.EventHandler(this.btn_SoundGame_Click);
             // 
@@ -391,11 +391,11 @@ namespace Dictionary.Forms.Practice
             this.btn_SoundBackground.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_SoundBackground.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_SoundBackground.ForeColor = System.Drawing.Color.White;
+            this.btn_SoundBackground.Image = global::Dictionary.Properties.Resources.icons8_audio_48px_1;
             this.btn_SoundBackground.Location = new System.Drawing.Point(465, 3);
             this.btn_SoundBackground.Name = "btn_SoundBackground";
-            this.btn_SoundBackground.Size = new System.Drawing.Size(65, 22);
+            this.btn_SoundBackground.Size = new System.Drawing.Size(65, 55);
             this.btn_SoundBackground.TabIndex = 7;
-            this.btn_SoundBackground.Text = "Nhạc nền";
             this.btn_SoundBackground.UseVisualStyleBackColor = false;
             this.btn_SoundBackground.Click += new System.EventHandler(this.btn_SoundBackground_Click);
             // 
@@ -406,11 +406,11 @@ namespace Dictionary.Forms.Practice
             this.btn_Sound.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Sound.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Sound.ForeColor = System.Drawing.Color.White;
+            this.btn_Sound.Image = global::Dictionary.Properties.Resources.icons8_audio_50px;
             this.btn_Sound.Location = new System.Drawing.Point(651, 3);
             this.btn_Sound.Name = "btn_Sound";
-            this.btn_Sound.Size = new System.Drawing.Size(65, 22);
+            this.btn_Sound.Size = new System.Drawing.Size(65, 55);
             this.btn_Sound.TabIndex = 6;
-            this.btn_Sound.Text = "Âm thanh";
             this.btn_Sound.UseVisualStyleBackColor = false;
             this.btn_Sound.Click += new System.EventHandler(this.btn_Sound_Click);
             // 

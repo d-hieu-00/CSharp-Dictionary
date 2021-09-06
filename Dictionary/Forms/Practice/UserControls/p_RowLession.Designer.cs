@@ -36,7 +36,7 @@ namespace Dictionary.Forms.Practice.UserControls
             // lb_InfoTopic
             // 
             this.lb_InfoTopic.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lb_InfoTopic.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_InfoTopic.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_InfoTopic.Location = new System.Drawing.Point(0, 24);
             this.lb_InfoTopic.Name = "lb_InfoTopic";
             this.lb_InfoTopic.Size = new System.Drawing.Size(180, 41);
@@ -48,7 +48,7 @@ namespace Dictionary.Forms.Practice.UserControls
             // lb_TitleTopic
             // 
             this.lb_TitleTopic.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lb_TitleTopic.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_TitleTopic.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_TitleTopic.Location = new System.Drawing.Point(0, 0);
             this.lb_TitleTopic.Name = "lb_TitleTopic";
             this.lb_TitleTopic.Size = new System.Drawing.Size(180, 24);

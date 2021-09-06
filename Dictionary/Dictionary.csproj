@@ -259,6 +259,20 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\icons8_video_game_48px.png" />
+    <None Include="Resources\icons8_show_property_40px.png" />
+    <None Include="Resources\icons8_search_in_list_100px.png" />
+    <None Include="Resources\icons8_redo_64px.png" />
+    <None Include="Resources\icons8_ok_50px.png" />
+    <None Include="Resources\icons8_game_soccer_100px.png" />
+    <None Include="Resources\icons8_forward_button_64px.png" />
+    <None Include="Resources\icons8_forward_button_48px.png" />
+    <None Include="Resources\icons8_edit_50px.png" />
+    <None Include="Resources\icons8_delete_50px.png" />
+    <None Include="Resources\icons8_clock_100px.png" />
+    <None Include="Resources\icons8_chequered_flag_48px.png" />
+    <None Include="Resources\icons8_audio_50px.png" />
+    <None Include="Resources\icons8_audio_48px_1.png" />
     <None Include="Resources\word.jpg" />
     <None Include="Resources\pronouce.jpg" />
     <None Include="Resources\mean.png" />
