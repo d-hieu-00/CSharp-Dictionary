@@ -371,7 +371,7 @@ namespace Dictionary.Forms.Search
             this.tabPage_Search.Location = new System.Drawing.Point(4, 22);
             this.tabPage_Search.Name = "tabPage_Search";
             this.tabPage_Search.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Search.Size = new System.Drawing.Size(230, 340);
+            this.tabPage_Search.Size = new System.Drawing.Size(230, 339);
             this.tabPage_Search.TabIndex = 0;
             this.tabPage_Search.Text = "Tìm kiếm";
             this.tabPage_Search.UseVisualStyleBackColor = true;
@@ -381,7 +381,7 @@ namespace Dictionary.Forms.Search
             this.flwLayout_Search.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flwLayout_Search.Location = new System.Drawing.Point(3, 3);
             this.flwLayout_Search.Name = "flwLayout_Search";
-            this.flwLayout_Search.Size = new System.Drawing.Size(224, 334);
+            this.flwLayout_Search.Size = new System.Drawing.Size(224, 333);
             this.flwLayout_Search.TabIndex = 0;
             // 
             // tabPage_HistorySearch
@@ -428,7 +428,7 @@ namespace Dictionary.Forms.Search
             this.tabPage_DetailDic.Location = new System.Drawing.Point(4, 22);
             this.tabPage_DetailDic.Name = "tabPage_DetailDic";
             this.tabPage_DetailDic.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_DetailDic.Size = new System.Drawing.Size(230, 340);
+            this.tabPage_DetailDic.Size = new System.Drawing.Size(230, 339);
             this.tabPage_DetailDic.TabIndex = 2;
             this.tabPage_DetailDic.Text = "Chi tiết TĐ";
             // 
@@ -439,7 +439,7 @@ namespace Dictionary.Forms.Search
             this.btn_LoadDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_LoadDetail.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_LoadDetail.ForeColor = System.Drawing.Color.White;
-            this.btn_LoadDetail.Location = new System.Drawing.Point(6, 330);
+            this.btn_LoadDetail.Location = new System.Drawing.Point(6, 313);
             this.btn_LoadDetail.Name = "btn_LoadDetail";
             this.btn_LoadDetail.Size = new System.Drawing.Size(218, 23);
             this.btn_LoadDetail.TabIndex = 12;
@@ -452,7 +452,7 @@ namespace Dictionary.Forms.Search
             this.treeView_DetailDic.Dock = System.Windows.Forms.DockStyle.Top;
             this.treeView_DetailDic.Location = new System.Drawing.Point(3, 3);
             this.treeView_DetailDic.Name = "treeView_DetailDic";
-            this.treeView_DetailDic.Size = new System.Drawing.Size(224, 322);
+            this.treeView_DetailDic.Size = new System.Drawing.Size(224, 304);
             this.treeView_DetailDic.TabIndex = 4;
             this.treeView_DetailDic.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_DetailDic_AfterSelect);
             // 
@@ -462,7 +462,7 @@ namespace Dictionary.Forms.Search
             this.tabPage_Mask.Location = new System.Drawing.Point(4, 22);
             this.tabPage_Mask.Name = "tabPage_Mask";
             this.tabPage_Mask.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Mask.Size = new System.Drawing.Size(230, 340);
+            this.tabPage_Mask.Size = new System.Drawing.Size(230, 339);
             this.tabPage_Mask.TabIndex = 3;
             this.tabPage_Mask.Text = "Đánh dấu";
             this.tabPage_Mask.UseVisualStyleBackColor = true;
@@ -472,7 +472,7 @@ namespace Dictionary.Forms.Search
             this.flwLayout_MaskWord.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flwLayout_MaskWord.Location = new System.Drawing.Point(3, 3);
             this.flwLayout_MaskWord.Name = "flwLayout_MaskWord";
-            this.flwLayout_MaskWord.Size = new System.Drawing.Size(224, 334);
+            this.flwLayout_MaskWord.Size = new System.Drawing.Size(224, 333);
             this.flwLayout_MaskWord.TabIndex = 1;
             // 
             // tabControl_Top
